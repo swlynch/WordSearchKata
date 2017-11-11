@@ -3,7 +3,8 @@ package com.techelevator;
 public class WordGrid {
 
 	public int find(String string) {
-		return 0;
+		String line = "WORD";
+		return line.indexOf(string);
 	}
 
 	
