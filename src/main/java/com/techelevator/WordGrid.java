@@ -8,7 +8,7 @@ public class WordGrid {
 	}
 
 	public boolean isInLine(String string) {
-		return false;
+		return true;
 	}
 
 	
