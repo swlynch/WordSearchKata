@@ -8,7 +8,8 @@ public class WordGrid {
 	}
 
 	public boolean isInLine(String string) {
-		return true;
+		String line = "WORD";
+		return (line.indexOf(string) >= 0);
 	}
 
 	
