@@ -27,7 +27,12 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shoudlReturnFalseIfWordMustardIsPresentInLine() {
+	public void shouldReturnFalseIfWordMustardIsPresentInLine() {
 		Assert.assertFalse("Should return 'false' that word 'MUSTARD' is in line", grid.isInLine("MUSTARD"));
+	}
+	
+	@Test
+	public void shouldReturnTrueIfWordIsPresentInBackwardsOrder() {
+		Assert.assertEquals("Should return true", grid.isInLine("CANDY"));
 	}
 }
