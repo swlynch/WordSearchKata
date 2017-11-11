@@ -15,4 +15,10 @@ public class WordSearchTest {
 		WordGrid grid = new WordGrid();
 		Assert.assertEquals("Should return the index 1", 1, grid.find("OR"));
 	}
+	
+	@Test
+	public void shouldReturnTrueIfSearchWordIsPresentInLine() {
+		WordGrid grid = new WordGrid();
+		Assert.assertTrue("Should return 'true' that word is present in line", grid.isInLine("WORD"));
+	}
 }

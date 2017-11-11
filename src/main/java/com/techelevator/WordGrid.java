@@ -7,5 +7,9 @@ public class WordGrid {
 		return line.indexOf(string);
 	}
 
+	public boolean isInLine(String string) {
+		return false;
+	}
+
 	
 }
