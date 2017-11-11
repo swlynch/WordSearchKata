@@ -21,4 +21,10 @@ public class WordSearchTest {
 		WordGrid grid = new WordGrid();
 		Assert.assertTrue("Should return 'true' that word is present in line", grid.isInLine("WORD"));
 	}
+	
+	@Test
+	public void shoudlReturnFalseIfWordMustardIsPresentInLine() {
+		WordGrid grid = new WordGrid();
+		Assert.assertFalse("Should return 'false' that word 'MUSTARD' is in line", grid.isInLine("MUSTARD"));
+	}
 }
