@@ -2,7 +2,15 @@ package com.techelevator;
 
 public class WordGrid {
 
-	String line = "WORDYDNAC";
+	private String line;
+	
+	public void setLine(String string) {
+		this.line = string;
+	}
+	
+	public String getLine() {
+		return line;
+	}
 	
 	public int returnIndex(String string) {
 		return line.indexOf(string);
