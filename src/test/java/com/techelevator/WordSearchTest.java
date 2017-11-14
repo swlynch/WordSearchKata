@@ -41,4 +41,11 @@ public class WordSearchTest {
 		char[] array = {'W','O','R','D'};
 		Assert.assertEquals("Should return true when String matches character sequence in array", "WORD", grid.convertArrayOfCharactersToString(array));
 	}
+	
+	@Test
+	public void returnTrueWhenWordIsPresentInAnArray() {
+		char[] array = {'W','O','R','D'};
+		String arrayToString = grid.convertArrayOfCharactersToString(array);
+		Assert.assertEquals("Should return true when 'word' is searched for in an array with the same letters", grid.isInLine(arrayToString));
+	}
 }
