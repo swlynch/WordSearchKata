@@ -22,6 +22,9 @@ public class WordGrid {
 	
 	public String convertArrayOfCharactersToString(char[] array) {
 		String arrayToString = "";
+		for (int i = 0; i < array.length; i++) {
+			arrayToString += array[i];
+		}
 		return arrayToString;
 	}
 	
