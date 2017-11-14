@@ -36,5 +36,9 @@ public class WordSearchTest {
 		Assert.assertTrue("Should return true", grid.isInLine("CANDY"));
 	}
 	
+	@Test
+	public void shouldReturnTrueStringFromArrayOfCharacter() {
+		char[] array = {'W','O','R','D'};
+		Assert.assertEquals("Should return true when String matches character sequence in array", "WORD", grid.convertArrayOfCharactersToString(array));
+	}
 }
-	

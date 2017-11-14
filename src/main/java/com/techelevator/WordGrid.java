@@ -17,8 +17,12 @@ public class WordGrid {
 		for (int i = string.length()-1 ; i >= 0 ; i--) {
 			reversed += string.charAt(i);
 		}
-		System.out.println(reversed);
 		return reversed;
+	}
+	
+	public String convertArrayOfCharactersToString(char[] array) {
+		String arrayToString = "";
+		return arrayToString;
 	}
 	
 }
