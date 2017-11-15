@@ -5,11 +5,13 @@ import org.junit.*;
 public class WordSearchTest {
 
 	private WordGrid grid;
+	private char[] array;
 	
 	@Before
 	public void setup() {
 		grid = new WordGrid();
-		grid.setLine("WORDYDNAC");
+		char[] array = {'W','O','R','D','Y','D','N','A','C'};
+		grid.setLine(array);
 	}
 	
 	@Test
@@ -38,7 +40,7 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shouldReturnTrueStringFromArrayOfCharacter() {
+	public void shouldCorrectlyCreateStringFromArrayOfCharacter() {
 		char[] array = {'W','O','R','D'};
 		Assert.assertEquals("Should return true when String matches character sequence in array", "WORD", grid.convertArrayOfCharactersToString(array));
 	}
@@ -48,5 +50,10 @@ public class WordSearchTest {
 		char[] array = {'W','O','R','D'};
 		String arrayToString = grid.convertArrayOfCharactersToString(array);
 		Assert.assertTrue("Should return true when 'word' is searched for in an array with the same letters", grid.isInLine(arrayToString));
+	}
+	
+	@Test
+	public void returnFalseWhenWordIsNotPresentInAnArray() {
+		Assert.assertFalse("Should return false when 'CANDY' is searched for in an array that does not contain those letters", grid.isInLine("MUSTARD"));
 	}
 }
