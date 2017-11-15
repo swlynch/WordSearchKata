@@ -39,7 +39,9 @@ public class WordGrid {
 	}
 
 	public String returnSearchWordLocation(String searchWord) {
-		return null;
+		Integer startLocation = this.returnIndex(searchWord);
+		Integer endLocation = startLocation + searchWord.length() - 1;
+		return "(" + startLocation + "," + endLocation + ")";
 	}
 	
 }
