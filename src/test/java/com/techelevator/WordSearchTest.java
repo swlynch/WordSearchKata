@@ -59,6 +59,11 @@ public class WordSearchTest {
 	
 	@Test
 	public void returnStartAndEndIndexForSearchWord() {
-		Assert.assertEquals("Should return (0,3)", "(0,3)", grid.returnSearchWordLocation("WORD"));
+		Assert.assertEquals("Should return (0,3)", "(0,3)", grid.returnSearchWordLocations("WORD"));
+	}
+	
+	@Test
+	public void returnLocationOfEachLetterInHorizontalLine() {
+		Assert.assertEquals("Should return (0,0), (0,1), (0,2), (0,3)", "(0,0), (0,1), (0,2), (0,3)", grid.returnLetterIndices("WORD"));
 	}
 }

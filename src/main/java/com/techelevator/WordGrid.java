@@ -38,10 +38,14 @@ public class WordGrid {
 		return arrayToString;
 	}
 
-	public String returnSearchWordLocation(String searchWord) {
+	public String returnSearchWordLocations(String searchWord) {
 		Integer startLocation = this.returnIndex(searchWord);
 		Integer endLocation = startLocation + searchWord.length() - 1;
 		return "(" + startLocation + "," + endLocation + ")";
+	}
+
+	public String returnLetterIndices(String string) {
+		return null;
 	}
 	
 }
