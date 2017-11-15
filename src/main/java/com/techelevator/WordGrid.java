@@ -18,10 +18,6 @@ public class WordGrid {
 		return stringOfCharacters.indexOf(string);
 	}
 
-	public boolean isInLine(String string) {
-		return ((stringOfCharacters.indexOf(string) >= 0) || (reverseStringLetters(stringOfCharacters).indexOf(string) >= 0));	
-	}
-
 	public String reverseStringLetters(String string) {
 		String reversed = "";
 		for (int i = string.length()-1 ; i >= 0 ; i--) {
@@ -30,12 +26,20 @@ public class WordGrid {
 		return reversed;
 	}
 	
+	public boolean isInLine(String searchWord) {
+		return ((stringOfCharacters.indexOf(searchWord) >= 0) || (reverseStringLetters(stringOfCharacters).indexOf(searchWord) >= 0));	
+	}
+	
 	public String convertArrayOfCharactersToString(char[] array) {
 		String arrayToString = "";
 		for (int i = 0; i < array.length; i++) {
 			arrayToString += array[i];
 		}
 		return arrayToString;
+	}
+
+	public String returnSearchWordLocation(String searchWord) {
+		return null;
 	}
 	
 }

@@ -56,4 +56,9 @@ public class WordSearchTest {
 	public void returnFalseWhenWordIsNotPresentInAnArray() {
 		Assert.assertFalse("Should return false when 'CANDY' is searched for in an array that does not contain those letters", grid.isInLine("MUSTARD"));
 	}
+	
+	@Test
+	public void returnStartAndEndIndexForSearchWord() {
+		Assert.assertEquals("Should return (0,3)", "(0,3)", grid.returnSearchWordLocation("WORD"));
+	}
 }
