@@ -44,8 +44,18 @@ public class WordGrid {
 		return "(" + startLocation + "," + endLocation + ")";
 	}
 
-	public String returnLetterIndices(String string) {
-		return null;
+	public String returnLetterIndices(String searchWord) {
+		Integer startLocation = this.returnIndex(searchWord);
+		String letterIndices = "(0," + startLocation + "), (0,";
+		for (int i = 1; i < searchWord.length(); i++) {
+			if (i != searchWord.length() - 1) {
+				letterIndices += (startLocation + i) + "), (0,";
+			} else {
+				letterIndices += (startLocation + i) + ")";
+			}
+		}
+		System.out.println(letterIndices);
+		return letterIndices;
 	}
 	
 }
