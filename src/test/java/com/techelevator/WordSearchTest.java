@@ -64,6 +64,11 @@ public class WordSearchTest {
 	
 	@Test
 	public void returnLocationOfEachLetterInHorizontalLine() {
-		Assert.assertEquals("Should return (0,0), (0,1), (0,2), (0,3)", "(0,0), (0,1), (0,2), (0,3)", grid.returnLetterIndices("WORD"));
+		Assert.assertEquals("Should return (0,0),(1,0),(2,0),(3,0)", "(0,0),(1,0),(2,0),(3,0)", grid.returnLetterIndices("WORD"));
+	}
+	
+	@Test
+	public void returnLocationOfEachLetterPresentInReverse() {
+		Assert.assertEquals("Should return (8,0),(7,0),(6,0),(5,0),(4,0)", "(8,0),(7,0),(6,0),(5,0),(4,0)", grid.returnLetterIndices("CANDY"));
 	}
 }

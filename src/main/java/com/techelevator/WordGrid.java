@@ -46,12 +46,12 @@ public class WordGrid {
 
 	public String returnLetterIndices(String searchWord) {
 		Integer startLocation = this.returnIndex(searchWord);
-		String letterIndices = "(0," + startLocation + "), (0,";
+		String letterIndices = "(" + startLocation + ",0),(";
 		for (int i = 1; i < searchWord.length(); i++) {
 			if (i != searchWord.length() - 1) {
-				letterIndices += (startLocation + i) + "), (0,";
+				letterIndices += (startLocation + i) + ",0),(";
 			} else {
-				letterIndices += (startLocation + i) + ")";
+				letterIndices += (startLocation + i) + ",0)";
 			}
 		}
 		System.out.println(letterIndices);
