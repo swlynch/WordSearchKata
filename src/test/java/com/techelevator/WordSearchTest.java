@@ -6,37 +6,44 @@ public class WordSearchTest {
 
 	private WordGrid grid;
 	private char[] array;
+	private String stringOfCharacters;
 	
 	@Before
 	public void setup() {
 		grid = new WordGrid();
 		char[] array = {'W','O','R','D','Y','D','N','A','C'};
 		grid.setLine(array);
+		stringOfCharacters = grid.getStringOfCharacters();
 	}
 	
 	@Test
 	public void shouldReturnAValueOf0ForIndexOfWord() {
-		Assert.assertEquals("Should return the index 0", 0, grid.returnIndex("WORD"));
+		Assert.assertEquals("Should return the index 0", 0, stringOfCharacters.indexOf("WORD"));
 	}
 	
 	@Test
 	public void shouldReturnAValueOf1ForIndexOfOr() {
-		Assert.assertEquals("Should return the index 1", 1, grid.returnIndex("OR"));
+		Assert.assertEquals("Should return the index 1", 1, stringOfCharacters.indexOf("OR"));
 	}
 	
 	@Test
 	public void shouldReturnTrueIfSearchWordIsPresentInLine() {
-		Assert.assertTrue("Should return 'true' that word is present in line", grid.isInLine("WORD"));
+		Assert.assertTrue("Should return 'true' that word is present in line", grid.isInLineHorizontallyOrInReverse("WORD"));
 	}
 	
 	@Test
 	public void shouldReturnFalseWhenWordMustardIsPresentIsNotLine() {
-		Assert.assertFalse("Should return 'false' that word 'MUSTARD' is in line", grid.isInLine("MUSTARD"));
+		Assert.assertFalse("Should return 'false' that word 'MUSTARD' is in line", grid.isInLineHorizontallyOrInReverse("MUSTARD"));
 	}
 	
 	@Test
 	public void shouldReturnTrueIfWordIsPresentInBackwardsOrder() {
-		Assert.assertTrue("Should return true", grid.isInLine("CANDY"));
+		Assert.assertTrue("Should return true", grid.isInLineHorizontallyOrInReverse("CANDY"));
+	}
+	
+	@Test
+	public void shoudlReturnTrueIfWordANDIsPresentInBackwardsOrder() {
+		Assert.assertTrue("Should return true", grid.isInLineHorizontallyOrInReverse("AND"));
 	}
 	
 	@Test
@@ -49,12 +56,12 @@ public class WordSearchTest {
 	public void returnTrueWhenWordIsPresentInAnArray() {
 		char[] array = {'W','O','R','D'};
 		String arrayToString = grid.convertArrayOfCharactersToString(array);
-		Assert.assertTrue("Should return true when 'word' is searched for in an array with the same letters", grid.isInLine(arrayToString));
+		Assert.assertTrue("Should return true when 'word' is searched for in an array with the same letters", grid.isInLineHorizontallyOrInReverse(arrayToString));
 	}
 	
 	@Test
 	public void returnFalseWhenWordIsNotPresentInAnArray() {
-		Assert.assertFalse("Should return false when 'CANDY' is searched for in an array that does not contain those letters", grid.isInLine("MUSTARD"));
+		Assert.assertFalse("Should return false when 'CANDY' is searched for in an array that does not contain those letters", grid.isInLineHorizontallyOrInReverse("MUSTARD"));
 	}
 	
 	@Test
