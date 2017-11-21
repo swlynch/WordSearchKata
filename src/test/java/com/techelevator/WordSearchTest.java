@@ -83,4 +83,11 @@ public class WordSearchTest {
 	public void returnLocationOfEachLetterPresentInTheWordANDInReverse() {
 		Assert.assertEquals("Should return (7,0),(6,0),(5,0)", "(7,0),(6,0),(5,0)", grid.returnLetterIndices("AND"));
 	}
+	
+	@Test
+	public void returnLocationOfEachLetterPresentInTheWordROWInReverse() {
+		Assert.assertEquals("Should return (2,0),(1,0),(0,0)", "(2,0),(1,0),(0,0)", grid.returnLetterIndices("ROW"));
+	}
+	
+	
 }

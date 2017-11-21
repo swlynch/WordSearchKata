@@ -80,8 +80,7 @@ public class WordGrid {
 	
 	public String indicesForWordsInReverse(String searchWord) {
 		Integer startLocation = reverseStringLetters(stringOfCharacters).indexOf(searchWord);
-		System.out.println(startLocation);
-		startLocation += (stringOfCharacters.length() - startLocation - 1);
+		startLocation = (stringOfCharacters.length() - startLocation - 1);
 		String letterIndices = "(" + startLocation + ",0),(";
 		for (int i = 1; i <= (searchWord.length() - 1); i++) {
 			if (i != searchWord.length() - 1) {
@@ -90,7 +89,6 @@ public class WordGrid {
 				letterIndices += (startLocation - i) + ",0)";
 			}
 		}
-		System.out.println(letterIndices);
 		return letterIndices;
 	}
 }
