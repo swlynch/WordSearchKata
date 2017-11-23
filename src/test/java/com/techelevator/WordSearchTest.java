@@ -5,13 +5,22 @@ import org.junit.*;
 public class WordSearchTest {
 
 	private WordGrid grid;
-	private char[] array;
+	private char[][] array;
 	private String stringOfCharacters;
 	
 	@Before
 	public void setup() {
 		grid = new WordGrid();
-		char[] array = {'W','O','R','D','Y','D','N','A','C'};
+		char[][] array = {{'W','F','A','L','A','F','E','L','B','F'},
+						{'D','Q','V','L','A','N','A','B','K','X'},
+						{'C','V','A','E','J','L','O','Z','A','T'},
+						{'W','G','B','L','A','Z','M','Y','J','C'},
+						{'O','F','L','D','V','Y','D','D','P','E'},
+						{'O','N','E','N','N','N','K','R','D','M'},
+						{'X','D','F','A','A','E','G','Y','O','P'},
+						{'O','C','A','C','T','U','S','I','A','W'},
+						{'D','D','E','Z','J','Q','O','G','L','O'},
+						{	'Y','N','T','U','D','E','W','G','B','G'}};
 		grid.setLine(array);
 		stringOfCharacters = grid.getStringOfCharacters();
 	}

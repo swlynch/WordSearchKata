@@ -2,10 +2,10 @@ package com.techelevator;
 
 public class WordGrid {
 
-	private char[] arrayOfCharacters;
+	private char[][] arrayOfCharacters;
 	private String stringOfCharacters;
 
-	public void setLine(char[] array) {
+	public void setLine(char[][] array) {
 		this.arrayOfCharacters = array;
 		this.stringOfCharacters = convertArrayOfCharactersToString(array);
 	}
