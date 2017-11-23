@@ -6,7 +6,8 @@ public class WordSearchTest {
 
 	private WordGrid grid;
 	private char[][] array;
-	private String[] arrayOfStrings;
+	private String[] arrayOfHorizontalStrings;
+	private String[] arrayOfVerticalStrings;
 	private String stringOfCharacters;
 	
 	@Before
@@ -23,7 +24,8 @@ public class WordSearchTest {
 						{'D','D','E','Z','J','Q','O','G','L','O'},
 						{'Y','N','T','U','D','E','W','G','B','G'}};
 		grid.setGrid(array);
-		arrayOfStrings = grid.getArrayOfStrings();
+		arrayOfHorizontalStrings = grid.getArrayOfHorizontalStrings();
+		arrayOfVerticalStrings = grid.getArrayOfVerticalStrings();
 	}
 	
 	@Test
@@ -80,12 +82,12 @@ public class WordSearchTest {
 	
 	@Test
 	public void shouldReturnTrueIfWordWOOIsPresentVertically() {
-		Assert.assertTrue("Should return true that word 'WOO' is present vertically", grid.isPresentInGridVertically("WOO"));
+		Assert.assertTrue("Should return true that word 'WOO' is present vertically", grid.presentInGridVertically("WOO"));
 	}
 	
 	@Test
 	public void shoudlReturnFalseIfWordMADAMisPresentVertically() {
-		Assert.assertTrue("Should return false that word 'MADAM' is present vertically", grid.isPresentInGridVertically("MADAM"));
+		Assert.assertTrue("Should return false that word 'MADAM' is present vertically", grid.presentInGridVertically("MADAM"));
 	}
 	
 	

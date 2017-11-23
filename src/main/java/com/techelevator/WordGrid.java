@@ -2,42 +2,70 @@ package com.techelevator;
 
 public class WordGrid {
 
-	private char[][] arrayOfCharacters;
-	private String[] arrayOfStrings;
+	private char[][] wordSearchGrid;
+	private String[] arrayOfHorizontalStrings;
+	private String[] arrayOfVerticalStrings;
 
 	public void setGrid(char[][] array) {
-		this.arrayOfCharacters = array;
-		this.arrayOfStrings = convertArrayOfOfArraysCharactersToStrings(array);
+		this.wordSearchGrid = array;
+		this.arrayOfHorizontalStrings = makeArrayOfHorizontalStringsInGrid();
+		this.arrayOfVerticalStrings = makeArrayOfVerticalStringsInGrid();
 	}
 	
 	public char[][] getGrid() {
-		return arrayOfCharacters;
+		return wordSearchGrid;
 	}
 	
-	public String[] getArrayOfStrings() {
-		return arrayOfStrings;
+	public String[] getArrayOfHorizontalStrings() {
+		return arrayOfHorizontalStrings;
 	}
 
-	public void setArrayOfStrings(String[] arrayOfRows) {
-		this.arrayOfStrings = arrayOfRows;
+	public void setArrayOfHorizontalStrings(String[] arrayOfRows) {
+		this.arrayOfHorizontalStrings = arrayOfRows;
 	}
 	
-	public String[] convertArrayOfOfArraysCharactersToStrings(char[][] array) {
-		String[] arrayOfString = new String[array.length];
-		for (int i = 0; i < array.length; i++) {
+	public String[] getArrayOfVerticalStrings() {
+		return arrayOfVerticalStrings;
+	}
+
+	public String[] makeArrayOfHorizontalStringsInGrid() {
+		String[] arrayOfString = new String[this.wordSearchGrid.length];
+		for (int i = 0; i < this.wordSearchGrid.length; i++) {
 			String stringFromCharacters = "";
-			for (int k = 0; k < array[i].length; k++) {
-				stringFromCharacters += array[i][k];
+			for (int k = 0; k < this.wordSearchGrid[i].length; k++) {
+				stringFromCharacters += this.wordSearchGrid[i][k];
 			}
 			arrayOfString[i] = stringFromCharacters;
 		}
 		return arrayOfString;
 	}
 	
+	public String[] makeArrayOfVerticalStringsInGrid() {
+		String[] verticalStrings = new String[wordSearchGrid.length];
+		for (int i = 0; i < verticalStrings.length; i++) {
+			String stringFromCharacters = "";
+			for (int k = 0; k < wordSearchGrid.length; k++) {
+				stringFromCharacters += this.wordSearchGrid[k][i];
+			}
+			arrayOfHorizontalStrings[i] = stringFromCharacters;
+		}
+		return verticalStrings;
+	}
+	
 	public Integer presentInWhichLineOfGridHorizontally(String searchWord) {
-		for (int i = 0; i < arrayOfStrings.length; i++) {
-			if (arrayOfStrings[i].contains(searchWord) || 
-					(reverseStringLetters(arrayOfStrings[i]).contains(searchWord))) {
+		for (int i = 0; i < arrayOfHorizontalStrings.length; i++) {
+			if (arrayOfHorizontalStrings[i].contains(searchWord) || 
+					(reverseStringLetters(arrayOfHorizontalStrings[i]).contains(searchWord))) {
+				return i;
+			}
+		}
+		return null;
+	}
+
+	private Integer presentInWhichLineOfGridVertically(String searchWord) {
+		for (int i = 0; i < arrayOfVerticalStrings.length; i++) {
+			if (arrayOfVerticalStrings[i].contains(searchWord) ||
+					(reverseStringLetters(arrayOfVerticalStrings[i]).contains(searchWord))){
 				return i;
 			}
 		}
@@ -45,7 +73,11 @@ public class WordGrid {
 	}
 	
 	public String stringThatContainsWord(String searchWord) {
-		return arrayOfStrings[presentInWhichLineOfGridHorizontally(searchWord)];
+		return arrayOfHorizontalStrings[presentInWhichLineOfGridHorizontally(searchWord)];
+	}
+	
+	public String stringThatContainsWordVertically(String searchWord) {
+		return arrayOfVerticalStrings[presentInWhichLineOfGridVertically(searchWord)];
 	}
 
 	public Boolean presentInGridHorizontally(String searchWord) {
@@ -55,6 +87,11 @@ public class WordGrid {
 	public Boolean presentInGridBackwards(String searchWord) {
 		return (reverseStringLetters(stringThatContainsWord(searchWord)).contains(searchWord));
 	}
+
+	public boolean presentInGridVertically(String searchWord) {
+		return (stringThatContainsWordVertically(searchWord).contains(searchWord));
+	}
+	
 
 	public String reverseStringLetters(String string) {
 		String reversed = "";
@@ -102,7 +139,4 @@ public class WordGrid {
 		return letterIndices;
 	}
 
-	public boolean isPresentInGridVertically(String string) {
-		return false;
-	}
 }
