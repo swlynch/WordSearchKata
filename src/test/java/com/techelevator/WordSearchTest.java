@@ -78,5 +78,15 @@ public class WordSearchTest {
 		Assert.assertEquals("Should return (1,7),(2,7),(3,7),(4,7),(5,7),(6,7)", "(1,7),(2,7),(3,7),(4,7),(5,7),(6,7)", grid.returnLetterIndices("CACTUS"));
 	}
 	
+	@Test
+	public void shouldReturnTrueIfWordWOOIsPresentVertically() {
+		Assert.assertTrue("Should return true that word 'WOO' is present vertically", grid.isPresentInGridVertically("WOO"));
+	}
+	
+	@Test
+	public void shoudlReturnFalseIfWordMADAMisPresentVertically() {
+		Assert.assertTrue("Should return false that word 'MADAM' is present vertically", grid.isPresentInGridVertically("MADAM"));
+	}
+	
 	
 }

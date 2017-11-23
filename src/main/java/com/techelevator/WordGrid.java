@@ -63,16 +63,6 @@ public class WordGrid {
 		}
 		return reversed;
 	}
-	
-//	public boolean isInLineHorizontallyOrInReverse(String searchWord) {
-//		return ((stringOfCharacters.indexOf(searchWord) >= 0) || (reverseStringLetters(stringOfCharacters).indexOf(searchWord) >= 0));	
-//	}
-//
-//	public String returnSearchWordLocations(String searchWord) {
-//		Integer startLocation = arrayOfStrings.indexOf(searchWord);
-//		Integer endLocation = startLocation + searchWord.length() - 1;
-//		return "(" + startLocation + "," + endLocation + ")";
-//	}
 
 	public String returnLetterIndices(String searchWord) {
 		if (presentInGridHorizontally(searchWord)) {
@@ -110,5 +100,9 @@ public class WordGrid {
 			}
 		}
 		return letterIndices;
+	}
+
+	public boolean isPresentInGridVertically(String string) {
+		return false;
 	}
 }
