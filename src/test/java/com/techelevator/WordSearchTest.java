@@ -21,8 +21,7 @@ public class WordSearchTest {
 						{'O','C','A','C','T','U','S','I','A','W'},
 						{'D','D','E','Z','J','Q','O','G','L','O'},
 						{	'Y','N','T','U','D','E','W','G','B','G'}};
-		grid.setLine(array);
-		stringOfCharacters = grid.getStringOfCharacters();
+		grid.setGrid(array);
 	}
 	
 	@Test
@@ -58,13 +57,13 @@ public class WordSearchTest {
 	@Test
 	public void shouldCorrectlyCreateStringFromArrayOfCharacter() {
 		char[] array = {'W','O','R','D'};
-		Assert.assertEquals("Should return true when String matches character sequence in array", "WORD", grid.convertArrayOfCharactersToString(array));
+		Assert.assertEquals("Should return true when String matches character sequence in array", "WORD", grid.convertArrayOfOfArraysCharactersToStrings(array));
 	}
 	
 	@Test
 	public void returnTrueWhenWordIsPresentInAnArray() {
 		char[] array = {'W','O','R','D'};
-		String arrayToString = grid.convertArrayOfCharactersToString(array);
+		String arrayToString = grid.convertArrayOfOfArraysCharactersToStrings(array);
 		Assert.assertTrue("Should return true when 'word' is searched for in an array with the same letters", grid.isInLineHorizontallyOrInReverse(arrayToString));
 	}
 	
