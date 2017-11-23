@@ -3,11 +3,11 @@ package com.techelevator;
 public class WordGrid {
 
 	private char[][] arrayOfCharacters;
-	private String[] arrayOfRows;
+	private String[] arrayOfStrings;
 
 	public void setGrid(char[][] array) {
 		this.arrayOfCharacters = array;
-		this.arrayOfRows = convertArrayOfOfArraysCharactersToStrings(array);
+		this.arrayOfStrings = convertArrayOfOfArraysCharactersToStrings(array);
 	}
 	
 	public char[][] getGrid() {
@@ -15,11 +15,11 @@ public class WordGrid {
 	}
 	
 	public String[] getArrayOfStrings() {
-		return arrayOfRows;
+		return arrayOfStrings;
 	}
 
 	public void setArrayOfStrings(String[] arrayOfRows) {
-		this.arrayOfRows = arrayOfRows;
+		this.arrayOfStrings = arrayOfRows;
 	}
 	
 	public String[] convertArrayOfOfArraysCharactersToStrings(char[][] array) {
@@ -35,9 +35,9 @@ public class WordGrid {
 	}
 	
 	public Integer presentInWhichLineOfGridHorizontally(String searchWord) {
-		for (int i = 0; i < arrayOfRows.length; i++) {
-			if (arrayOfRows[i].contains(searchWord) || 
-					(reverseStringLetters(arrayOfRows[i]).contains(searchWord))) {
+		for (int i = 0; i < arrayOfStrings.length; i++) {
+			if (arrayOfStrings[i].contains(searchWord) || 
+					(reverseStringLetters(arrayOfStrings[i]).contains(searchWord))) {
 				return i;
 			}
 		}
@@ -45,14 +45,14 @@ public class WordGrid {
 	}
 	
 	public String stringThatContainsWord(String searchWord) {
-		return arrayOfRows[presentInWhichLineOfGridHorizontally(searchWord)];
+		return arrayOfStrings[presentInWhichLineOfGridHorizontally(searchWord)];
 	}
 
-	public Boolean presentInLineHorizontally(String searchWord) {
+	public Boolean presentInGridHorizontally(String searchWord) {
 		return (stringThatContainsWord(searchWord).contains(searchWord));
 	}
 	
-	public Boolean presentInLineBackwards(String searchWord) {
+	public Boolean presentInGridBackwards(String searchWord) {
 		return (reverseStringLetters(stringThatContainsWord(searchWord)).contains(searchWord));
 	}
 
@@ -75,9 +75,9 @@ public class WordGrid {
 //	}
 
 	public String returnLetterIndices(String searchWord) {
-		if (presentInLineHorizontally(searchWord)) {
+		if (presentInGridHorizontally(searchWord)) {
 			return indicesForHorizontalWords(searchWord);
-		} else if (presentInLineBackwards(searchWord)){
+		} else if (presentInGridBackwards(searchWord)){
 			return indicesForWordsInReverse(searchWord);
 		}
 		return null;
