@@ -28,15 +28,16 @@ public class WordSearchTest {
 		arrayOfVerticalStrings = grid.getArrayOfVerticalStrings();
 	}
 	
+	
 	@Test
-	public void shouldReturnAValueOf1ForIndexOfWORD() {
-		stringOfCharacters = grid.stringThatContainsWord("CACTUS");
+	public void shouldReturnAValueOf1ForIndexOfCACTUS() {
+		stringOfCharacters = grid.stringThatContainsWordHorizontally("CACTUS");
 		Assert.assertEquals("Should return the index 1", 1, stringOfCharacters.indexOf("CACTUS"));
 	}
 	
 	@Test
 	public void shouldReturnAValueOf4ForIndexOfDEW() {
-		stringOfCharacters = grid.stringThatContainsWord("DEW");
+		stringOfCharacters = grid.stringThatContainsWordHorizontally("DEW");
 		Assert.assertEquals("Should return the index 4", 4, stringOfCharacters.indexOf("DEW"));
 	}
 	
