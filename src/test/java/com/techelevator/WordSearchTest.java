@@ -7,7 +7,7 @@ public class WordSearchTest {
 	private WordGrid grid;
 	private char[][] array;
 	private String[] arrayOfHorizontalStrings;
-	private String[] arrayOfVerticalStrings;
+//	private String[] arrayOfVerticalStrings;
 	private String stringOfCharacters;
 	
 	@Before
@@ -25,9 +25,20 @@ public class WordSearchTest {
 						{'Y','N','T','U','D','E','W','G','B','G'}};
 		grid.setGrid(array);
 		arrayOfHorizontalStrings = grid.getArrayOfHorizontalStrings();
-		arrayOfVerticalStrings = grid.getArrayOfVerticalStrings();
+//		arrayOfVerticalStrings = grid.getArrayOfVerticalStrings();
+
 	}
 	
+	@Test
+	public void arrayOfHorizontalStringsShouldNotBeNull() {
+		Assert.assertNotNull("Should not be null", arrayOfHorizontalStrings);
+	}
+	
+	@Test
+	public void stringContainingWordCACTUSShouldNotBeNull() {
+		stringOfCharacters = grid.stringThatContainsWordHorizontally("CACTUS");
+		Assert.assertNotNull("Should not be null", stringOfCharacters);
+	}
 	
 	@Test
 	public void shouldReturnAValueOf1ForIndexOfCACTUS() {
@@ -40,56 +51,76 @@ public class WordSearchTest {
 		stringOfCharacters = grid.stringThatContainsWordHorizontally("DEW");
 		Assert.assertEquals("Should return the index 4", 4, stringOfCharacters.indexOf("DEW"));
 	}
-	
+
 	@Test
-	public void shouldReturnNotNullIfSearchWORDIsPresentInLine() {
-		Assert.assertNotNull("Should return a number that WORD is present in grid", grid.presentInWhichLineOfGridHorizontally("CACTUS"));
+	public void shouldReturnAValueOf1ForIndexOfFALAFEL() {
+		stringOfCharacters = grid.stringThatContainsWordHorizontally("FALAFEL");
+		Assert.assertEquals("Should return the index 1", 1, stringOfCharacters.indexOf("FALAFEL"));
+	}
+
+	@Test
+	public void shouldReturnTrueIfONEIsPresentInLine() {
+		Assert.assertTrue("Should return 'true' that word is present in line", grid.presentInGridHorizontally("ONE") || grid.presentInGridBackwards("ONE"));
 	}
 	
 	@Test
-	public void shouldReturnNullWhenSearchingIfWordMUSTARDIsPresentIsNotLine() {
-		Assert.assertNull("Should assert 'null' that word 'MUSTARD' is in grid", grid.presentInWhichLineOfGridHorizontally("MUSTARD"));
+	public void shouldReturnFalseWhenWordMustardIsPresentIsNotLine() {
+		Assert.assertFalse("Should return 'false' that word 'MUSTARD' is in line", grid.presentInGridHorizontally("MUSTARD") && grid.presentInLineBackwards("MUSTARD"));
 	}
+//	
+//	@Test
+//	public void shouldReturnTrueIfWordIsPresentInBackwardsOrder() {
+//		Assert.assertTrue("Should return true", grid.isInLineHorizontallyOrInReverse("CANDY"));
+//	}
+//	
+//	@Test
+//	public void shoudlReturnTrueIfWordANDIsPresentInBackwardsOrder() {
+//		Assert.assertTrue("Should return true", grid.isInLineHorizontallyOrInReverse("AND"));
+//	}
+//	
+//	@Test
+//	public void shouldCorrectlyCreateStringFromArrayOfCharacter() {
+//		char[] array = {'W','O','R','D'};
+//		Assert.assertEquals("Should return true when String matches character sequence in array", "WORD", grid.convertArrayOfOfArraysCharactersToStrings(array));
+//	}
+//	
+//	@Test
+//	public void returnTrueWhenWordIsPresentInAnArray() {
+//		char[] array = {'W','O','R','D'};
+//		String arrayToString = grid.convertArrayOfOfArraysCharactersToStrings(array);
+//		Assert.assertTrue("Should return true when 'word' is searched for in an array with the same letters", grid.isInLineHorizontallyOrInReverse(arrayToString));
+//	}
+//	
+//	@Test
+//	public void returnFalseWhenWordIsNotPresentInAnArray() {
+//		Assert.assertFalse("Should return false when 'CANDY' is searched for in an array that does not contain those letters", grid.presentInGridHorizontally(searchWord)("MUSTARD"));
+//	}
+	
 	
 	@Test
-	public void shouldReturnTrueIfWEDIsPresentInBackwardsOrder() {
-		Assert.assertTrue("Should return true", grid.presentInGridBackwards("WED"));
-	}
-	
-	@Test
-	public void shoudlReturnTrueIfWordZEDIsPresentInBackwardsOrder() {
-		Assert.assertTrue("Should return true", grid.presentInGridBackwards("ZED"));
-	}
-	
-	@Test
-	public void returnLocationOfEachLetterOfFALAFELInHorizontalLine() {
-		Assert.assertEquals("Should return (1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0)", "(1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0)", grid.returnLetterIndices("FALAFEL"));
-	}
-	
-	@Test
-	public void returnLocationOfEachLetterOfWEDInReverse() {
-		Assert.assertEquals("Should return (6,9),(5,9),(4,9)", "(6,9),(5,9),(4,9)", grid.returnLetterIndices("WED"));
-	}
-	
-	@Test
-	public void returnLocationOfEachLetterPresentInTheWordBANInReverse() {
-		Assert.assertEquals("Should return (7,1),(6,1),(5,1)", "(7,1),(6,1),(5,1)", grid.returnLetterIndices("BAN"));
-	}
-	
-	@Test
-	public void returnLocationOfEachLetterPresentInTheWordCACTUS() {
+	public void returnLocationOfEachLetterOfCACTUSInHorizontalLine() {
 		Assert.assertEquals("Should return (1,7),(2,7),(3,7),(4,7),(5,7),(6,7)", "(1,7),(2,7),(3,7),(4,7),(5,7),(6,7)", grid.returnLetterIndices("CACTUS"));
 	}
 	
 	@Test
-	public void shouldReturnTrueIfWordWOOIsPresentVertically() {
-		Assert.assertTrue("Should return true that word 'WOO' is present vertically", grid.presentInGridVertically("WOO"));
+	public void returnLocationOfEachLetterofFALAFEL() {
+		Assert.assertEquals("Should return (1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0)", "(1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0)", grid.returnLetterIndices("FALAFEL"));
 	}
 	
 	@Test
-	public void shoudlReturnFalseIfWordMADAMisPresentVertically() {
-		Assert.assertTrue("Should return false that word 'MADAM' is present vertically", grid.presentInGridVertically("MADAM"));
+	public void returnLocationOfEachLetterPresentInTheWordWEDInReverse() {
+		Assert.assertEquals("Should return (9,7),(9,6),(9,5)", "(9,7),(9,6),(9,5)", grid.returnLetterIndices("WED"));
 	}
+	
+//	@Test
+//	public void shouldReturnTrueIfWordWOOIsPresentVertically() {
+//		Assert.assertTrue("Should return true that word 'WOO' is present vertically", grid.presentInGridVertically("WOO"));
+//	}
+//	
+//	@Test
+//	public void shoudlReturnFalseIfWordMADAMisPresentVertically() {
+//		Assert.assertTrue("Should return false that word 'MADAM' is present vertically", grid.presentInGridVertically("MADAM"));
+//	}
 	
 	
 }
