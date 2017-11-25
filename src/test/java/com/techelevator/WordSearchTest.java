@@ -94,5 +94,10 @@ public class WordSearchTest {
 	public void returnLocationOfEachLetterOfBackwardsStringPDDY() {
 		Assert.assertEquals("Should return (8,4),(7,4),(6,4),(5,4)", "(8,4),(7,4),(6,4),(5,4)", grid.returnLetterIndices("PDDY"));
 	}
+	
+	@Test
+	public void shouldReturnTrueThatWordWOOIsPresentVertically() {
+		Assert.assertTrue("Should return TRUE that word WOO is present vertically", grid.isPresentVertically("WOO"));
+	}
 
 }

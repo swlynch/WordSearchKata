@@ -129,4 +129,8 @@ public class WordGrid {
 		return letterIndices;
 	}
 
+	public boolean isPresentVertically(String string) {
+		return false;
+	}
+
 }
