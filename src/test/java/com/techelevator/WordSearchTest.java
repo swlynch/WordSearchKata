@@ -113,12 +113,22 @@ public class WordSearchTest {
 	
 	@Test
 	public void shouldReturnIndicesOfVerticalWordWOO() {
-		Integer lineWithWord = grid.presentInWhichLineOfGrid(arrayOfVerticalStrings, "WOO");
-		String string = arrayOfVerticalStrings[lineWithWord];
-		System.out.println(string);
-		Integer startLocation = string.indexOf("WOO");
-		System.out.println(startLocation);
 		Assert.assertEquals("Should return (0,3),(0,4),(0,5)", "(0,3),(0,4),(0,5)", grid.returnLetterIndices("WOO"));
+	}
+	
+	@Test
+	public void shouldReturnIndicesOfVerticalWordSOW() {
+		Assert.assertEquals("Should return (6,7),(6,8),(6,9)", "(6,7),(6,8),(6,9)", grid.returnLetterIndices("SOW"));
+	}
+
+	@Test
+	public void shouldReturnIndicesOfVerticalAndBackwardsCANDLE() {
+		Assert.assertEquals("Should return (3,7),(3,6),(3,5),(3,4),(3,3),(3,2)", "(3,7),(3,6),(3,5),(3,4),(3,3),(3,2)", grid.returnLetterIndices("CANDLE"));
+	}
+	
+	@Test
+	public void shoudlReturnIndicesOfVerticalAndBackwardsVQF() {
+		Assert.assertEquals("Should return (1,2),(1,1),(1,0)", "(1,2),(1,1),(1,0)", grid.returnLetterIndices("VQF"));
 	}
 
 }

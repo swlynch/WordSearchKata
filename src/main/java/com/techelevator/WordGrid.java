@@ -144,6 +144,8 @@ public class WordGrid {
 			return indicesForWordsInReverse(searchWord);
 		} else if (isPresentVertically(searchWord)){
 			return indicesForVerticalWords(searchWord);
+		} else if (isPresentVerticalAndBackwards(searchWord)) {
+			return indicesForVerticalAndBackwardsWords(searchWord);
 		} else {
 			return null;
 		}
@@ -189,6 +191,22 @@ public class WordGrid {
 				letterIndices += (lineWithWord) + "," + (startLocation + i) +"),(";
 			} else {
 				letterIndices += (lineWithWord) + "," + (startLocation + i) + ")";
+			}
+		}
+		return letterIndices;
+	}
+	
+	private String indicesForVerticalAndBackwardsWords(String searchWord) {
+		Integer lineWithWord = presentInWhichLineOfGrid(arrayOfVerticalStrings, searchWord);
+		String string = reverseStringLetters(arrayOfVerticalStrings[lineWithWord]);
+		Integer startLocation = string.indexOf(searchWord);
+		startLocation = (string.length() - startLocation - 1);
+		String letterIndices = "(" + lineWithWord + "," + startLocation + "),(";
+		for (int i = 1; i <= (searchWord.length() - 1); i++) {
+			if (i != searchWord.length() - 1) {
+				letterIndices += lineWithWord + "," + (startLocation - i) +"),(";
+			} else {
+				letterIndices += lineWithWord + "," + (startLocation - i) + ")";
 			}
 		}
 		return letterIndices;
