@@ -4,13 +4,15 @@ public class WordGrid {
 
 	private char[][] wordSearchGrid;
 	private String[] arrayOfHorizontalStrings;
+	private String[] arrayOfVerticalStrings;
 	private String[] arrayOfRows;
 	
 	public void setGrid(char[][] array) {
 		this.wordSearchGrid = array;
 		this.arrayOfHorizontalStrings = makeArrayOfHorizontalStringsInGrid();
+		this.arrayOfVerticalStrings = makeArrayOfVerticalStringsInGrid();
 	}
-	
+
 	public char[][] getGrid() {
 		return wordSearchGrid;
 	}
@@ -35,10 +37,32 @@ public class WordGrid {
 		return arrayOfStrings;
 	}
 
+	private String[] makeArrayOfVerticalStringsInGrid() {
+		String[] arrayOfStrings = new String[wordSearchGrid.length];
+		for (int i = 0; i < wordSearchGrid.length; i++) {
+			String stringFromCharacters = "";
+			for (int k = 0; k < wordSearchGrid[i].length; k++) {
+				stringFromCharacters += wordSearchGrid[k][i];
+			}
+			arrayOfStrings[i] = stringFromCharacters;
+		}
+		return arrayOfStrings;
+	}
+	
 	public Integer presentInWhichLineOfGridHorizontally(String searchWord) {
 		for (int i = 0; i < arrayOfHorizontalStrings.length; i++) {
 			if (arrayOfHorizontalStrings[i].contains(searchWord) ||
 					(reverseStringLetters(arrayOfHorizontalStrings[i]).contains(searchWord))) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
+	public Integer presentInWhichLineOfGrid(String[] array, String searchWord) {
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].contains(searchWord) ||
+					(reverseStringLetters(array[i]).contains(searchWord))) {
 				return i;
 			}
 		}
@@ -71,6 +95,15 @@ public class WordGrid {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean isPresentVertically(String searchWord) {
+		for (int i = 0; i < arrayOfVerticalStrings.length; i++) {
+			if (arrayOfVerticalStrings[i].contains(searchWord)) {
+				return true;
+			}
+		} 
+		return false;
 	}
 	
 	public String stringThatContainsWord(String searchWord) {
@@ -129,8 +162,5 @@ public class WordGrid {
 		return letterIndices;
 	}
 
-	public boolean isPresentVertically(String string) {
-		return false;
-	}
 
 }
