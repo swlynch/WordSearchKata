@@ -97,7 +97,17 @@ public class WordSearchTest {
 	
 	@Test
 	public void shouldReturnTrueThatWordWOOIsPresentVertically() {
-		Assert.assertTrue("Should return TRUE that word WOO is present vertically", grid.isPresentVertically("WOO"));
+		Assert.assertTrue("Should return true that word WOO is present vertically", grid.isPresentVertically("WOO"));
+	}
+	
+	@Test
+	public void shoudldReturnTrueThatWordCANDLEIsPresentVertically() {
+		Assert.assertTrue("Should return true that word CANDLE is present vertically", grid.isPresentVertically("CANDLE"));
+	}
+	
+	@Test
+	public void shoudlReturnFalseThatWordLIGHTBEAMSIsPresentVertically() {
+		Assert.assertFalse("Should return true that word CANDLE is present vertically", grid.isPresentVertically("LIGHTBEAMS"));
 	}
 
 }
