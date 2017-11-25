@@ -127,8 +127,13 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shoudlReturnIndicesOfVerticalAndBackwardsVQF() {
+	public void shouldReturnIndicesOfVerticalAndBackwardsVQF() {
 		Assert.assertEquals("Should return (1,2),(1,1),(1,0)", "(1,2),(1,1),(1,0)", grid.returnLetterIndices("VQF"));
+	}
+	
+	@Test
+	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
+		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentDiagonallyDescending("ROW"));
 	}
 
 }

@@ -121,6 +121,11 @@ public class WordGrid {
 		return false;
 	}
 	
+
+	public boolean isPresentDiagonallyDescending(String string) {
+		return false;
+	}
+	
 	public String stringThatContainsWord(String searchWord) {
 		return arrayOfRows[presentInWhichLineOfGridHorizontally(searchWord)];
 	}
@@ -211,6 +216,7 @@ public class WordGrid {
 		}
 		return letterIndices;
 	}
+
 
 
 
