@@ -99,7 +99,8 @@ public class WordGrid {
 	
 	public boolean isPresentVertically(String searchWord) {
 		for (int i = 0; i < arrayOfVerticalStrings.length; i++) {
-			if (arrayOfVerticalStrings[i].contains(searchWord)) {
+			if (arrayOfVerticalStrings[i].contains(searchWord) ||
+					reverseStringLetters(arrayOfVerticalStrings[i]).contains(searchWord)) {
 				return true;
 			}
 		} 
