@@ -25,6 +25,10 @@ public class WordGrid {
 		return arrayOfHorizontalStrings;
 	}
 
+	public String[] getArrayOfVerticalStrings() {
+		return arrayOfVerticalStrings;
+	}
+
 	public String[] makeArrayOfHorizontalStringsInGrid() {
 		String[] arrayOfStrings = new String[wordSearchGrid.length];
 		for (int i = 0; i < wordSearchGrid.length; i++) {
@@ -81,26 +85,36 @@ public class WordGrid {
 		return reverseStringLetters(arrayOfHorizontalStrings[presentInWhichLineOfGridHorizontally(searchWord)]);
 	}
 
-	public Boolean isPresentInGridHorizontally(String searchWord) {
-		if (stringThatContainsWordHorizontally(searchWord).contains(searchWord)) {
-			return true;
-		} else {
-			return false;
+	public Boolean isPresentHorizontally(String searchWord) {
+		for (int i = 0; i < arrayOfHorizontalStrings.length; i++) {
+			if (arrayOfHorizontalStrings[i].contains(searchWord)) {
+				return true;
+			}
 		}
+		return false;
 	}
 	
-	public Boolean isPresentInGridBackwards(String searchWord) {
-		if (stringThatContainsWordHorizontalAndBackwards(searchWord).contains(searchWord)) {
-			return true;
-		} else {
-			return false;
+	public Boolean isPresentHorizontalAndBackwards(String searchWord) {
+		for (int i = 0; i < arrayOfHorizontalStrings.length; i++) {
+			if (reverseStringLetters(arrayOfHorizontalStrings[i]).contains(searchWord)) {
+				return true;
+			}
 		}
+		return false;
 	}
 	
 	public boolean isPresentVertically(String searchWord) {
 		for (int i = 0; i < arrayOfVerticalStrings.length; i++) {
-			if (arrayOfVerticalStrings[i].contains(searchWord) ||
-					reverseStringLetters(arrayOfVerticalStrings[i]).contains(searchWord)) {
+			if (arrayOfVerticalStrings[i].contains(searchWord)) {
+				return true;
+			}
+		} 
+		return false;
+	}
+	
+	public boolean isPresentVerticalAndBackwards(String searchWord) {
+		for (int i = 0; i < arrayOfVerticalStrings.length; i++) {
+			if (reverseStringLetters(arrayOfVerticalStrings[i]).contains(searchWord)) {
 				return true;
 			}
 		} 
@@ -124,10 +138,12 @@ public class WordGrid {
 	}
 
 	public String returnLetterIndices(String searchWord) {
-		if (isPresentInGridHorizontally(searchWord)) {
+		if (isPresentHorizontally(searchWord)) {
 			return indicesForHorizontalWords(searchWord);
-		} else if (isPresentInGridBackwards(searchWord)){
+		} else if (isPresentHorizontalAndBackwards(searchWord)){
 			return indicesForWordsInReverse(searchWord);
+		} else if (isPresentVertically(searchWord)){
+			return indicesForVerticalWords(searchWord);
 		} else {
 			return null;
 		}
@@ -162,6 +178,22 @@ public class WordGrid {
 		}
 		return letterIndices;
 	}
+
+	private String indicesForVerticalWords(String searchWord) {
+		Integer lineWithWord = presentInWhichLineOfGrid(arrayOfVerticalStrings, searchWord);
+		String string = arrayOfVerticalStrings[lineWithWord];
+		Integer startLocation = string.indexOf(searchWord);
+		String letterIndices = "(" + lineWithWord + "," + startLocation + "),(";
+		for (int i = 1; i <= (searchWord.length() - 1); i++) {
+			if (i != searchWord.length() - 1) {
+				letterIndices += (lineWithWord) + "," + (startLocation + i) +"),(";
+			} else {
+				letterIndices += (lineWithWord) + "," + (startLocation + i) + ")";
+			}
+		}
+		return letterIndices;
+	}
+
 
 
 }
