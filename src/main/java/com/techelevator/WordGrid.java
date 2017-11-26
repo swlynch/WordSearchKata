@@ -63,9 +63,15 @@ public class WordGrid {
 	private String[] makeArrayOfDiagonalDescendingStrings() {
 		String[] diagonalArray = new String[wordSearchGrid.length * 2 - 1];
 		int gridLength = wordSearchGrid.length - 1;
+		//i indicates what element of the diagonalDescending array
 		for (int i = 0; i <= (gridLength); i++) {
-			String string = ""; 
-			string += wordSearchGrid[gridLength - i][0];
+			String string = "";
+			int counter = gridLength;
+			//k is for what # element across in the wordSearchGrid
+			for (int k = 0; k <= i; k++) {
+				string += wordSearchGrid[counter - i][k];
+				counter++;
+			}
 			diagonalArray[i] = string;
 		}
 		for (int i = 1; i <= gridLength; i++) {

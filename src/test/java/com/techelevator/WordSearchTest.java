@@ -145,11 +145,6 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shouldReturn9thAElementinDiagonalArrayAsW() {
-		Assert.assertEquals("Should return W as 9th element", "W", diagonalArray[9]);
-	}
-	
-	@Test
 	public void shouldReturn18thElementAsF() {
 		Assert.assertEquals("Should return F as 18th element", "F", diagonalArray[18]);
 	}
