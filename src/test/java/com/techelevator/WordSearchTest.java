@@ -150,8 +150,8 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shouldReturn15thElementasE() {
-		Assert.assertEquals("Should return E as 15th element", "E", diagonalArray[15]);
+	public void shouldReturn15thElementasEBAC() {
+		Assert.assertEquals("Should return E as 15th element", "EBAC", diagonalArray[15]);
 	}
 	
 	@Test
@@ -163,6 +163,7 @@ public class WordSearchTest {
 	public void shouldReturn9thElementOfDiagonalDescendingAsWQALVNGILG() {
 		Assert.assertEquals("Should return 9th element of array as WQALVNGILG", "WQALVNGILG", diagonalArray[9]);
 	}
+	
 	
 //	@Test
 //	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
