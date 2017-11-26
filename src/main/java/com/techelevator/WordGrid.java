@@ -68,6 +68,11 @@ public class WordGrid {
 			string += wordSearchGrid[gridLength - i][0];
 			diagonalArray[i] = string;
 		}
+		for (int i = 1; i <= gridLength; i++) {
+			String string = "";
+			string += wordSearchGrid[0][i];
+			diagonalArray[gridLength + i] = string;
+		}
 		return diagonalArray;
 	}
 	

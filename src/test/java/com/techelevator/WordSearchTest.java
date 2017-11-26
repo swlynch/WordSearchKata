@@ -149,10 +149,23 @@ public class WordSearchTest {
 		Assert.assertEquals("Should return W as 9th element", "W", diagonalArray[9]);
 	}
 	
+	@Test
+	public void shouldReturn18thElementAsF() {
+		System.out.println(diagonalArray[9]);
+		System.out.println(diagonalArray[10]);
+		System.out.println(diagonalArray[11]);
+		Assert.assertEquals("Should return F as 18th element", "F", diagonalArray[18]);
+	}
 	
 	@Test
-	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
-		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentDiagonallyDescending("ROW"));
+	public void shouldReturn15thElementasE() {
+		Assert.assertEquals("Should return E as 15th element", "E", diagonalArray[15]);
 	}
+	
+	
+//	@Test
+//	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
+//		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentDiagonallyDescending("ROW"));
+//	}
 
 }
