@@ -164,6 +164,15 @@ public class WordSearchTest {
 		Assert.assertEquals("Should return 9th element of array as WQALVNGILG", "WQALVNGILG", diagonalArray[9]);
 	}
 	
+	@Test
+	public void shouldReturn10thElementOfDiagonalDescendingAsFVEAYKYAO() {
+		Assert.assertEquals("Should return 9th element of array as FVEAYKYAO", "FVEAYKYAO", diagonalArray[10]);
+	}
+	
+	@Test
+	public void shouldReturn17thElementofDiagonalDescendingAsBX() {
+		Assert.assertEquals("Should return 17th element as BX", "BX", diagonalArray[17]);
+	}
 	
 //	@Test
 //	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
