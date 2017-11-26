@@ -175,8 +175,13 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
+	public void shouldReturnTrueThatWordROWIsPresentDiagonallyDescending() {
 		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentDiagonallyDescending("ROW"));
+	}
+	
+	@Test
+	public void shouldReturnTrueThatWORDAppearsDiagonalDescending() {
+		Assert.assertTrue("Should assert true that WORD appears in diagonal descending array", grid.isPresentDiagonallyDescending("WORD"));
 	}
 
 }
