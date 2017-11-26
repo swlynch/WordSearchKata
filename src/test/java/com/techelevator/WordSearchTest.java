@@ -132,6 +132,19 @@ public class WordSearchTest {
 	}
 	
 	@Test
+	public void shouldReturnLengthOf19ForDiagonalDescendingArrayOfStrings() {
+		String[] diagonalArray = grid.getArrayOfDiagonalDescendingStrings();
+		Assert.assertEquals("Should return length of 19", 19, diagonalArray.length, 0.01);
+	}
+	
+	@Test
+	public void shoudlReturnFirstElementInDiagonalArrayAsY() {
+		String[] diagonalArray = grid.getArrayOfDiagonalDescendingStrings();
+		Assert.assertEquals("Should return the char Y as first element in array", "Y", diagonalArray[0]);
+	}
+	
+	
+	@Test
 	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
 		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentDiagonallyDescending("ROW"));
 	}

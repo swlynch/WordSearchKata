@@ -5,13 +5,16 @@ public class WordGrid {
 	private char[][] wordSearchGrid;
 	private String[] arrayOfHorizontalStrings;
 	private String[] arrayOfVerticalStrings;
+	private String[] arrayOfDiagonalDescendingStrings;
 	private String[] arrayOfRows;
 	
 	public void setGrid(char[][] array) {
 		this.wordSearchGrid = array;
 		this.arrayOfHorizontalStrings = makeArrayOfHorizontalStringsInGrid();
 		this.arrayOfVerticalStrings = makeArrayOfVerticalStringsInGrid();
+		this.arrayOfDiagonalDescendingStrings = makeArrayOfDiagonalDescendingStrings();
 	}
+
 
 	public char[][] getGrid() {
 		return wordSearchGrid;
@@ -27,6 +30,10 @@ public class WordGrid {
 
 	public String[] getArrayOfVerticalStrings() {
 		return arrayOfVerticalStrings;
+	}
+	
+	public String[] getArrayOfDiagonalDescendingStrings() {
+		return arrayOfDiagonalDescendingStrings;
 	}
 
 	public String[] makeArrayOfHorizontalStringsInGrid() {
@@ -51,6 +58,10 @@ public class WordGrid {
 			arrayOfStrings[i] = stringFromCharacters;
 		}
 		return arrayOfStrings;
+	}
+
+	private String[] makeArrayOfDiagonalDescendingStrings() {
+		return null;
 	}
 	
 	public Integer presentInWhichLineOfGridHorizontally(String searchWord) {
@@ -122,7 +133,12 @@ public class WordGrid {
 	}
 	
 
-	public boolean isPresentDiagonallyDescending(String string) {
+	public boolean isPresentDiagonallyDescending(String searchWord) {
+		for (int i = 0; i < arrayOfDiagonalDescendingStrings.length; i++) {
+			if (arrayOfDiagonalDescendingStrings[i].contains(searchWord)) {
+				return true;
+			}
+		}
 		return false;
 	}
 	
