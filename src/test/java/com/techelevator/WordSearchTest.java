@@ -8,6 +8,7 @@ public class WordSearchTest {
 	private String[] arrayOfHorizontalStrings;
 	private String[] arrayOfVerticalStrings;
 	private String stringOfCharacters;
+	private String[] diagonalArray;
 	
 	@Before
 	public void setup() {
@@ -25,6 +26,8 @@ public class WordSearchTest {
 		grid.setGrid(array);
 		arrayOfHorizontalStrings = grid.getArrayOfHorizontalStrings();
 		arrayOfVerticalStrings = grid.getArrayOfVerticalStrings();
+		diagonalArray = grid.getArrayOfDiagonalDescendingStrings();
+
 	}
 	
 	@Test
@@ -133,14 +136,17 @@ public class WordSearchTest {
 	
 	@Test
 	public void shouldReturnLengthOf19ForDiagonalDescendingArrayOfStrings() {
-		String[] diagonalArray = grid.getArrayOfDiagonalDescendingStrings();
 		Assert.assertEquals("Should return length of 19", 19, diagonalArray.length, 0.01);
 	}
 	
 	@Test
 	public void shoudlReturnFirstElementInDiagonalArrayAsY() {
-		String[] diagonalArray = grid.getArrayOfDiagonalDescendingStrings();
 		Assert.assertEquals("Should return the char Y as first element in array", "Y", diagonalArray[0]);
+	}
+	
+	@Test
+	public void shouldReturn9thAElementinDiagonalArrayAsW() {
+		Assert.assertEquals("Should return W as 9th element", "W", diagonalArray[9]);
 	}
 	
 	
