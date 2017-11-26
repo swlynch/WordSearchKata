@@ -188,5 +188,16 @@ public class WordSearchTest {
 	public void shouldReturnIndexOf11ForWhatDiagonalDesendingStringWORDAppearsIn() {
 		Assert.assertEquals("Should return an index 11 for array of diagonal descending array when looking for word WORD", 11, grid.presentInWhichLineOfGrid(diagonalArray, "WORD"), 0.01);
 	}
+	
+	@Test
+	public void shouldReturnCorrectIndicesForWordFEATDiagonally() {
+		Assert.assertEquals("Should return indices of (1,4),(2,5),(3,6),(4,7)", "(1,4),(2,5),(3,6),(4,7)", grid.returnLetterIndices("FEAT"));
+
+	}
+	
+	@Test
+	public void shoudlReturnCorrectIndicesForWordWORDDiagonally() {
+		Assert.assertEquals("Should return indices of (9,7),(8,6),(7,5),(6,4)", "(9,7),(8,6),(7,5),(6,4)", grid.returnLetterIndices("WORD"));
+	}
 
 }
