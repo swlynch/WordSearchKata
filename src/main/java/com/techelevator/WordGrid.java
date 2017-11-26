@@ -61,7 +61,8 @@ public class WordGrid {
 	}
 
 	private String[] makeArrayOfDiagonalDescendingStrings() {
-		String[] diagonalArray = new String[19];
+		String[] diagonalArray = new String[wordSearchGrid.length * 2 - 1];
+		diagonalArray[0] = "Y";
 		return diagonalArray;
 	}
 	
