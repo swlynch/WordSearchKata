@@ -181,7 +181,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void shouldReturnTrueThatWORDAppearsDiagonalDescending() {
-		Assert.assertTrue("Should assert true that WORD appears in diagonal descending array", grid.isPresentDiagonallyDescending("WORD"));
+		Assert.assertTrue("Should assert true that WORD appears in diagonal descending array", grid.isPresentDiagonalDescendingBackwards("WORD"));
 	}
 
 }

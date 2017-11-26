@@ -154,11 +154,19 @@ public class WordGrid {
 		} 
 		return false;
 	}
-	
 
 	public boolean isPresentDiagonallyDescending(String searchWord) {
 		for (int i = 0; i < arrayOfDiagonalDescendingStrings.length; i++) {
 			if (arrayOfDiagonalDescendingStrings[i].contains(searchWord)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isPresentDiagonalDescendingBackwards(String searchWord) {
+		for (int i = 0; i < arrayOfDiagonalDescendingStrings.length; i++) {
+			if (reverseStringLetters(arrayOfDiagonalDescendingStrings[i]).contains(searchWord)) {
 				return true;
 			}
 		}
