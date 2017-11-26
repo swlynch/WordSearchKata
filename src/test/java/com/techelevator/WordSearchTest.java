@@ -66,7 +66,7 @@ public class WordSearchTest {
 	
 	@Test
 	public void shouldReturnFalseWhenWordMUSTARDIsPresentIsNotLine() {
-		Assert.assertNull("Should return null", grid.presentInWhichLineOfGridHorizontally("MUSTARD"));
+		Assert.assertNull("Should return null", grid.presentInWhichLineOfGrid(arrayOfHorizontalStrings, "MUSTARD"));
 	}
 	
 	@Test
