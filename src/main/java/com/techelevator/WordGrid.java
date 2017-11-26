@@ -61,7 +61,8 @@ public class WordGrid {
 	}
 
 	private String[] makeArrayOfDiagonalDescendingStrings() {
-		return null;
+		String[] diagonalArray = new String[19];
+		return diagonalArray;
 	}
 	
 	public Integer presentInWhichLineOfGridHorizontally(String searchWord) {
