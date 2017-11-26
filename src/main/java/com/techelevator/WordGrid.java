@@ -191,19 +191,37 @@ public class WordGrid {
 
 	public String returnLetterIndices(String searchWord) {
 		if (isPresentHorizontally(searchWord)) {
-			return indicesForHorizontalWords(searchWord);
+			return indicesForHorizontal(searchWord);
 		} else if (isPresentHorizontalAndBackwards(searchWord)){
-			return indicesForWordsInReverse(searchWord);
+			return indicesForWordsHorizontalBackwards(searchWord);
 		} else if (isPresentVertically(searchWord)){
-			return indicesForVerticalWords(searchWord);
+			return indicesForVertical(searchWord);
 		} else if (isPresentVerticalAndBackwards(searchWord)) {
-			return indicesForVerticalAndBackwardsWords(searchWord);
-		} else {
+			return indicesForVerticalAndBackwards(searchWord);
+		} else if (isPresentDiagonallyDescending(searchWord)) {
+			return indicesForDiagonalDescending(searchWord);
+		} else if (isPresentDiagonalDescendingBackwards(searchWord)) {
+			return indicesForDiagonalDescendingBackwards(searchWord);
+		}
+		
+		else {
 			return null;
 		}
 	}
 
-	public String indicesForHorizontalWords(String searchWord) {
+	private String indicesForDiagonalDescendingBackwards(String searchWord) {
+		
+		return null;
+	}
+
+
+	private String indicesForDiagonalDescending(String searchWord) {
+		
+		return null;
+	}
+
+
+	public String indicesForHorizontal(String searchWord) {
 		Integer lineWithWord = presentInWhichLineOfGridHorizontally(searchWord);
 		Integer startLocation = stringThatContainsWordHorizontally(searchWord).indexOf(searchWord);
 		String letterIndices = "(" + startLocation + "," + lineWithWord + "),(";
@@ -217,7 +235,7 @@ public class WordGrid {
 		return letterIndices;
 	}
 	
-	public String indicesForWordsInReverse(String searchWord) {
+	public String indicesForWordsHorizontalBackwards(String searchWord) {
 		Integer lineWithWord = presentInWhichLineOfGridHorizontally(searchWord);
 		Integer startLocation = stringThatContainsWordHorizontalAndBackwards(searchWord).indexOf(searchWord);
 		String string = stringThatContainsWordHorizontalAndBackwards(searchWord);
@@ -233,7 +251,7 @@ public class WordGrid {
 		return letterIndices;
 	}
 
-	private String indicesForVerticalWords(String searchWord) {
+	private String indicesForVertical(String searchWord) {
 		Integer lineWithWord = presentInWhichLineOfGrid(arrayOfVerticalStrings, searchWord);
 		String string = arrayOfVerticalStrings[lineWithWord];
 		Integer startLocation = string.indexOf(searchWord);
@@ -248,7 +266,7 @@ public class WordGrid {
 		return letterIndices;
 	}
 	
-	private String indicesForVerticalAndBackwardsWords(String searchWord) {
+	private String indicesForVerticalAndBackwards(String searchWord) {
 		Integer lineWithWord = presentInWhichLineOfGrid(arrayOfVerticalStrings, searchWord);
 		String string = reverseStringLetters(arrayOfVerticalStrings[lineWithWord]);
 		Integer startLocation = string.indexOf(searchWord);
