@@ -174,9 +174,9 @@ public class WordSearchTest {
 		Assert.assertEquals("Should return 17th element as BX", "BX", diagonalArray[17]);
 	}
 	
-//	@Test
-//	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
-//		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentDiagonallyDescending("ROW"));
-//	}
+	@Test
+	public void shouldReturnFalseThatWordROWIsPresentDiagonallyDescending() {
+		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentDiagonallyDescending("ROW"));
+	}
 
 }
