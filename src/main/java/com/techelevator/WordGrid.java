@@ -271,11 +271,14 @@ public class WordGrid {
 
 	private String indicesForDiagonalDescending(String searchWord) {
 		Integer arrayIndexOfWord = presentInWhichLineOfGrid(arrayOfDiagonalDescendingStrings, searchWord);
-		Integer xLocation = stringThatContainsWordDiagonalDescending(searchWord).indexOf(searchWord);
-		if (xLocation >= wordSearchGrid.length) {
-			xLocation -= wordSearchGrid.length;
-		}
-		int yLocation = wordSearchGrid.length - arrayIndexOfWord;
+		int xLocation, yLocation;
+		if (arrayIndexOfWord >= wordSearchGrid.length) {
+			yLocation = stringThatContainsWordDiagonalDescending(searchWord).indexOf(searchWord); 
+			xLocation = arrayIndexOfWord - wordSearchGrid.length + 1;
+		} else {
+			xLocation = stringThatContainsWordDiagonalDescending(searchWord).indexOf(searchWord);
+			yLocation = wordSearchGrid.length - arrayIndexOfWord;
+		}		
 		String indices = "(" + xLocation + "," + yLocation + "),(";
 		for (int i = 1; i < searchWord.length() - 1; i++) {
 			xLocation++;
