@@ -9,6 +9,7 @@ public class WordSearchTest {
 	private String[] arrayOfVerticalStrings;
 	private String stringOfCharacters;
 	private String[] diagonalArray;
+	private String[] diagonalAscendingArray;
 	
 	@Before
 	public void setup() {
@@ -27,7 +28,7 @@ public class WordSearchTest {
 		arrayOfHorizontalStrings = grid.getArrayOfHorizontalStrings();
 		arrayOfVerticalStrings = grid.getArrayOfVerticalStrings();
 		diagonalArray = grid.getArrayOfDiagonalDescendingStrings();
-
+		diagonalAscendingArray = grid.getArrayOfDiagonalAscendingStrings();
 	}
 	
 	@Test
@@ -235,4 +236,9 @@ public class WordSearchTest {
 		Assert.assertEquals("Should return indices of (3,3),(2,2),(1,1)", "(3,3),(2,2),(1,1)", grid.returnLetterIndices("LAQ"));
 	}
 
+	@Test
+	public void shouldReturnLengthOf19ForDiagonalAscendingArrayOfStrings() {
+		Assert.assertEquals("Should return length of 19", 19, diagonalAscendingArray.length, 0.01);
+	}
+	
 }

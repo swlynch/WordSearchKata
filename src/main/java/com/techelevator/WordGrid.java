@@ -6,15 +6,15 @@ public class WordGrid {
 	private String[] arrayOfHorizontalStrings;
 	private String[] arrayOfVerticalStrings;
 	private String[] arrayOfDiagonalDescendingStrings;
-	private String[] arrayOfRows;
+	private String[] arrayOfDiagonalAscendingStrings;
 	
 	public void setGrid(char[][] array) {
 		this.wordSearchGrid = array;
 		this.arrayOfHorizontalStrings = makeArrayOfHorizontalStringsInGrid();
 		this.arrayOfVerticalStrings = makeArrayOfVerticalStringsInGrid();
 		this.arrayOfDiagonalDescendingStrings = makeArrayOfDiagonalDescendingStrings();
+		this.arrayOfDiagonalAscendingStrings = makeArrayOfDiagonalAscendingStrings();
 	}
-
 
 	public char[][] getGrid() {
 		return wordSearchGrid;
@@ -35,6 +35,11 @@ public class WordGrid {
 	public String[] getArrayOfDiagonalDescendingStrings() {
 		return arrayOfDiagonalDescendingStrings;
 	}
+	
+	public String[] getArrayOfDiagonalAscendingStrings() {
+		return arrayOfDiagonalAscendingStrings;
+	}
+
 
 	public String[] makeArrayOfHorizontalStringsInGrid() {
 		String[] arrayOfStrings = new String[wordSearchGrid.length];
@@ -86,6 +91,11 @@ public class WordGrid {
 		}
 		return diagonalArray;
 	}
+
+	private String[] makeArrayOfDiagonalAscendingStrings() {
+		return null;
+	}
+
 	
 	public Integer presentInWhichLineOfGrid(String[] array, String searchWord) {
 		for (int i = 0; i < array.length; i++) {
