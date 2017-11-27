@@ -211,8 +211,13 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shouldReturnCorrectIndicesForWordDAZDiagonalAndBackwards() {
-		Assert.assertEquals("Should return indices of (3,8),(2,7),(1,6)", "(3,8),(2,7),(1,6)", grid.returnLetterIndices("DAZ"));
+	public void shouldReturnCorrectIndicesForWordZADDiagonalAndBackwards() {
+		Assert.assertEquals("Should return indices of (3,8),(2,7),(1,6)", "(3,8),(2,7),(1,6)", grid.returnLetterIndices("ZAD"));
+	}
+	
+	@Test
+	public void shouldReturnCorrectIndicesForWordSENDDiagonalAndBackwards() {
+		Assert.assertEquals("Should return indices of (6,7),(5,6),(4,5),(3,4)", "(6,7),(5,6),(4,5),(3,4)", grid.returnLetterIndices("SEND"));
 	}
 
 }
