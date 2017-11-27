@@ -223,7 +223,16 @@ public class WordSearchTest {
 	@Test
 	public void shouldReturnCorrectIndicesForWordCABDiagonalBackwards() {
 		Assert.assertEquals("Should return indices of (9,3),(8,2),(7,1)", "(9,3),(8,2),(7,1)", grid.returnLetterIndices("CAB"));
-
+	}
+	
+	@Test
+	public void shouldReturnCorrectIndicesForWordQALDiagonal() {
+		Assert.assertEquals("Should return indices of (1,1),(2,2),(3,3)", "(1,1),(2,2),(3,3)", grid.returnLetterIndices("QAL"));
+	}
+	
+	@Test
+	public void shouldReturnCorrectIndicesForWordLAQDiagonal() {
+		Assert.assertEquals("Should return indices of (3,3),(2,2),(1,1)", "(3,3),(2,2),(1,1)", grid.returnLetterIndices("LAQ"));
 	}
 
 }
