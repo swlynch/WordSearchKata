@@ -93,7 +93,8 @@ public class WordGrid {
 	}
 
 	private String[] makeArrayOfDiagonalAscendingStrings() {
-		return null;
+		String[] diagonalArray = new String[wordSearchGrid.length * 2 - 1];
+		return diagonalArray;
 	}
 
 	
