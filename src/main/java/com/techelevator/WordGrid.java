@@ -293,8 +293,9 @@ public class WordGrid {
 		Integer arrayIndexOfWord = presentInWhichLineOfGrid(arrayOfDiagonalDescendingStrings, searchWord);
 		int xLocation,yLocation;
 		if (arrayIndexOfWord >= wordSearchGrid.length) {
-			yLocation = stringThatContainsWordDiagonalDescending(searchWord).indexOf(searchWord);
-			xLocation = arrayIndexOfWord - wordSearchGrid.length + yLocation; 
+			String reverseString = reverseStringLetters(arrayOfDiagonalDescendingStrings[arrayIndexOfWord]);
+			yLocation = reverseString.length() - reverseString.indexOf(searchWord) - 1;
+			xLocation = arrayIndexOfWord - wordSearchGrid.length + yLocation + 1; 
 		} else {
 			String reverseString = reverseStringLetters(arrayOfDiagonalDescendingStrings[arrayIndexOfWord]);
 			xLocation = reverseString.length() - reverseString.indexOf(searchWord) - 1;
@@ -308,15 +309,6 @@ public class WordGrid {
 		}
 		indices += (xLocation - 1) + "," + (yLocation - 1) + ")";
 		return indices;
-		
-//		String stringWithWord = stringThatContainsWordDiagonalDescendingBackward(searchWord);
-//		Integer xLocation = (wordSearchGrid.length - stringWithWord.indexOf(searchWord));
-//		if (xLocation >= wordSearchGrid.length) {
-//			xLocation -= wordSearchGrid.length;
-//		}
-//		int yLocation = wordSearchGrid.length - arrayIndexOfWord;
-//		String indices = "(" + xLocation + "," + yLocation + "),(";
-//		return indices;
 	}
 
 

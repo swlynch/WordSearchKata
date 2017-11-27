@@ -219,5 +219,11 @@ public class WordSearchTest {
 	public void shouldReturnCorrectIndicesForWordSENDDiagonalAndBackwards() {
 		Assert.assertEquals("Should return indices of (6,7),(5,6),(4,5),(3,4)", "(6,7),(5,6),(4,5),(3,4)", grid.returnLetterIndices("SEND"));
 	}
+	
+	@Test
+	public void shouldReturnCorrectIndicesForWordCABDiagonalBackwards() {
+		Assert.assertEquals("Should return indices of (9,3),(8,2),(7,1)", "(9,3),(8,2),(7,1)", grid.returnLetterIndices("CAB"));
+
+	}
 
 }
