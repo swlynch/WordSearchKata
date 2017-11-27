@@ -116,6 +116,15 @@ public class WordGrid {
 			return null;
 		}
 	}
+	
+	public String stringThatContainsWordDiagonalDescendingBackward(String searchWord) {
+		try {
+			return reverseStringLetters(arrayOfDiagonalDescendingStrings[presentInWhichLineOfGrid(arrayOfDiagonalDescendingStrings, searchWord)]);
+		} catch (NullPointerException e) {
+			return null;
+		}
+		
+	}
 
 	public Boolean isPresentHorizontally(String searchWord) {
 		for (int i = 0; i < arrayOfHorizontalStrings.length; i++) {
@@ -245,16 +254,16 @@ public class WordGrid {
 	}
 	
 	private String indicesForVerticalAndBackwards(String searchWord) {
-		Integer lineWithWord = presentInWhichLineOfGrid(arrayOfVerticalStrings, searchWord);
-		String string = reverseStringLetters(arrayOfVerticalStrings[lineWithWord]);
+		Integer arrayIndexOfWord = presentInWhichLineOfGrid(arrayOfVerticalStrings, searchWord);
+		String string = reverseStringLetters(arrayOfVerticalStrings[arrayIndexOfWord]);
 		Integer startLocation = string.indexOf(searchWord);
 		startLocation = (string.length() - startLocation - 1);
-		String letterIndices = "(" + lineWithWord + "," + startLocation + "),(";
+		String letterIndices = "(" + arrayIndexOfWord + "," + startLocation + "),(";
 		for (int i = 1; i <= (searchWord.length() - 1); i++) {
 			if (i != searchWord.length() - 1) {
-				letterIndices += lineWithWord + "," + (startLocation - i) +"),(";
+				letterIndices += arrayIndexOfWord + "," + (startLocation - i) +"),(";
 			} else {
-				letterIndices += lineWithWord + "," + (startLocation - i) + ")";
+				letterIndices += arrayIndexOfWord + "," + (startLocation - i) + ")";
 			}
 		}
 		return letterIndices;
@@ -262,24 +271,31 @@ public class WordGrid {
 
 	private String indicesForDiagonalDescending(String searchWord) {
 		Integer arrayIndexOfWord = presentInWhichLineOfGrid(arrayOfDiagonalDescendingStrings, searchWord);
-		Integer indexOfWordInString = stringThatContainsWordDiagonalDescending(searchWord).indexOf(searchWord);
-		if (indexOfWordInString >= wordSearchGrid.length) {
-			indexOfWordInString -= wordSearchGrid.length;
+		Integer xLocation = stringThatContainsWordDiagonalDescending(searchWord).indexOf(searchWord);
+		if (xLocation >= wordSearchGrid.length) {
+			xLocation -= wordSearchGrid.length;
 		}
 		int yLocation = wordSearchGrid.length - arrayIndexOfWord;
-		String indices = "(" + indexOfWordInString + "," + yLocation + "),(";
+		String indices = "(" + xLocation + "," + yLocation + "),(";
 		for (int i = 1; i < searchWord.length() - 1; i++) {
-			indexOfWordInString++;
+			xLocation++;
 			yLocation++;
-			indices += indexOfWordInString + "," + yLocation + "),(";
+			indices += xLocation + "," + yLocation + "),(";
 		}
-		indices += (indexOfWordInString + 1) + "," + (yLocation + 1) + ")";
+		indices += (xLocation + 1) + "," + (yLocation + 1) + ")";
 		return indices;
 	}
 
 	private String indicesForDiagonalDescendingBackwards(String searchWord) {
-		
-		return null;
+		Integer arrayIndexOfWord = presentInWhichLineOfGrid(arrayOfDiagonalDescendingStrings, searchWord);
+		String stringWithWord = stringThatContainsWordDiagonalDescendingBackward(searchWord);
+		Integer xLocation = (wordSearchGrid.length - stringWithWord.indexOf(searchWord));
+		if (xLocation >= wordSearchGrid.length) {
+			xLocation -= wordSearchGrid.length;
+		}
+		int yLocation = wordSearchGrid.length - arrayIndexOfWord;
+		String indices = "(" + xLocation + "," + yLocation + "),(";
+		return indices;
 	}
 
 

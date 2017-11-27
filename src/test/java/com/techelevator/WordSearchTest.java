@@ -192,12 +192,21 @@ public class WordSearchTest {
 	@Test
 	public void shouldReturnCorrectIndicesForWordFEATDiagonally() {
 		Assert.assertEquals("Should return indices of (1,4),(2,5),(3,6),(4,7)", "(1,4),(2,5),(3,6),(4,7)", grid.returnLetterIndices("FEAT"));
-
 	}
 	
 	@Test
-	public void shoudlReturnCorrectIndicesForWordWORDDiagonally() {
+	public void shouldReturnCorrectIndicesForWordFAZDiagonally() {
+		Assert.assertEquals("Should return indices of (6,0),(7,1),(8,2)", "(6,0),(7,1),(8,2)", grid.returnLetterIndices("FAZ"));
+	}
+	
+	@Test
+	public void shouldReturnCorrectIndicesForWordWORDDiagonalAndBackwards() {
 		Assert.assertEquals("Should return indices of (9,7),(8,6),(7,5),(6,4)", "(9,7),(8,6),(7,5),(6,4)", grid.returnLetterIndices("WORD"));
+	}
+	
+	@Test
+	public void shouldReturnCorrectIndicesForWordDAZDiagonalAndBackwards() {
+		Assert.assertEquals("Should return indices of (3,8),(2,7),(1,6)", "(3,8),(2,7),(1,6)", grid.returnLetterIndices("DAZ"));
 	}
 
 }
