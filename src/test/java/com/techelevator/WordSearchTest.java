@@ -285,4 +285,14 @@ public class WordSearchTest {
 	public void shouldReturnIndicesOfCANDYCorrectly() {
 		Assert.assertEquals("Should return indices of CANDY as (3,7),(4,6),(5,5),(6,4),(7,3)", "(3,7),(4,6),(5,5),(6,4),(7,3)", grid.returnLetterIndices("CANDY"));
 	}
+	
+	@Test
+	public void shouldReturnIndicesOfLAGCorrectly() { 
+		Assert.assertEquals("Should return for the word LAG the indices (3,1),(2,2),(1,3)","(3,1),(2,2),(1,3)", grid.returnLetterIndices("LAG"));
+	}
+	
+	@Test
+	public void shouldReturnIndicesOFPRGUCorrectly() {
+		Assert.assertEquals("Should return for the string PRGU the indices (8,4),(7,5),(6,6),(5,7)", "(8,4),(7,5),(6,6),(5,7)", grid.returnLetterIndices("PRGU"));
+	}
 }
