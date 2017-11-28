@@ -256,4 +256,14 @@ public class WordSearchTest {
 		Assert.assertEquals("Should return the string DF as first element in array", "DF", diagonalAscendingArray[1]);
 	}
 	
+	@Test
+	public void shouldReturnTrueThatCANDYAppearsInDiagonalAscendingArray() {
+		Assert.assertTrue("Should return true that CANDY appears diagonal ascending", grid.isPresentDiagonalAscending("CANDY"));
+	}
+	
+	@Test
+	public void shoudlReturnFalseThatPASTAAppearsInDiagonalAscendingArray() {
+		Assert.assertFalse("Should return false that PASTA appears diagonal ascending", grid.isPresentDiagonalAscending("PASTA"));
+
+	}
 }

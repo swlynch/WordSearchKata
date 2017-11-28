@@ -210,6 +210,11 @@ public class WordGrid {
 		}
 		return false;
 	}
+	
+
+	public boolean isPresentDiagonalAscending(String searchWord) {
+		return false;
+	}
 
 	private String reverseStringLetters(String string) {
 		String reversed = "";
@@ -341,6 +346,7 @@ public class WordGrid {
 		indices += (xLocation - 1) + "," + (yLocation - 1) + ")";
 		return indices;
 	}
+
 
 
 
