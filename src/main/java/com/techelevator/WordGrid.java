@@ -210,7 +210,6 @@ public class WordGrid {
 		}
 		return false;
 	}
-	
 
 	public boolean isPresentDiagonalAscending(String searchWord) {
 		for (int i = 0; i < arrayOfDiagonalAscendingStrings.length; i++) {
@@ -218,6 +217,10 @@ public class WordGrid {
 				return true;
 			}
 		}
+		return false;
+	}
+	
+	public boolean isPresentDiagonalAscendingBackward(String searchWord) {
 		return false;
 	}
 
@@ -351,6 +354,8 @@ public class WordGrid {
 		indices += (xLocation - 1) + "," + (yLocation - 1) + ")";
 		return indices;
 	}
+
+
 
 
 

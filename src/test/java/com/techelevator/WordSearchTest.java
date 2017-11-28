@@ -262,8 +262,17 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shoudlReturnFalseThatPASTAAppearsInDiagonalAscendingArray() {
+	public void shouldReturnFalseThatPASTAAppearsInDiagonalAscendingArray() {
 		Assert.assertFalse("Should return false that PASTA appears diagonal ascending", grid.isPresentDiagonalAscending("PASTA"));
-
+	}
+	
+	@Test
+	public void shouldReturnTrueThatLAGAppearsInDiagonalAscendingArrayBackwards() {
+		Assert.assertTrue("Should return true that LAG appears diagonal ascending", grid.isPresentDiagonalAscendingBackward("LAG"));
+	}
+	
+	@Test
+	public void shouldReturnFalseThatGLORIAAppearsInDiagonalAscendingArrayBackwards() {
+		Assert.assertFalse("Should return false that GLORIA appears diagonal ascending", grid.isPresentDiagonalAscendingBackward("GLORIA"));
 	}
 }
