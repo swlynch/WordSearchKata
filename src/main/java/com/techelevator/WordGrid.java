@@ -249,9 +249,11 @@ public class WordGrid {
 			return indicesForDiagonalDescending(searchWord);
 		} else if (isPresentDiagonalDescendingBackwards(searchWord)) {
 			return indicesForDiagonalDescendingBackwards(searchWord);
-		}
-		
-		else {
+		} else if (isPresentDiagonalAscending(searchWord)) {
+			return indicesForDiagonalAscending(searchWord);
+		} else if (isPresentDiagonalAscendingBackward(searchWord)) {
+			return indicesForDiagonalAscendingBackwards(searchWord);
+		} else {
 			return null;
 		}
 	}
@@ -358,6 +360,38 @@ public class WordGrid {
 		indices += (xLocation - 1) + "," + (yLocation - 1) + ")";
 		return indices;
 	}
+	
+
+	private String indicesForDiagonalAscending(String searchWord) {
+		Integer arrayIndexOfWord = presentInWhichLineOfGrid(arrayOfDiagonalAscendingStrings, searchWord);
+		Integer index = arrayOfDiagonalAscendingStrings[arrayIndexOfWord].indexOf(searchWord);
+		int xLocation, yLocation;
+		if (arrayIndexOfWord >= wordSearchGrid.length) {
+			yLocation = wordSearchGrid.length - index - 1;
+			xLocation = arrayIndexOfWord - yLocation;
+		} else {
+			yLocation = arrayIndexOfWord - 1;
+			xLocation = index;
+		}
+		String indices = "(" + xLocation + "," + yLocation + "),(";
+		for (int i = 1; i < searchWord.length() - 1; i++) {
+			xLocation++;
+			yLocation--;
+			indices += xLocation + "," + yLocation + "),(";
+		}
+		indices += (xLocation + 1) + "," + (yLocation - 1) + ")";
+		return indices;
+	}
+	
+	private String stringThatContainsWordDiagonalAscending(String searchWord) {
+		return arrayOfDiagonalAscendingStrings[presentInWhichLineOfGrid(arrayOfDiagonalAscendingStrings, searchWord)];
+	}
+
+	private String indicesForDiagonalAscendingBackwards(String searchWord) {
+
+		return null;
+	}
+
 
 
 

@@ -284,6 +284,5 @@ public class WordSearchTest {
 	@Test
 	public void shouldReturnIndicesOfCANDYCorrectly() {
 		Assert.assertEquals("Should return indices of CANDY as (3,7),(4,6),(5,5),(6,4),(7,3)", "(3,7),(4,6),(5,5),(6,4),(7,3)", grid.returnLetterIndices("CANDY"));
-
 	}
 }
