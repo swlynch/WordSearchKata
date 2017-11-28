@@ -68,32 +68,52 @@ public class WordGrid {
 	private String[] makeArrayOfDiagonalDescendingStrings() {
 		String[] diagonalArray = new String[wordSearchGrid.length * 2 - 1];
 		int gridLength = wordSearchGrid.length - 1;
-		//builds first half of diagonal array
-		for (int i = 0; i <= (gridLength); i++) {
+		//builds bottom left of diagonal strings
+		for (int i = 0; i <= gridLength; i++) {
 			String string = "";
 			int counter = gridLength;
-			//k is for what # element across in the wordSearchGrid
 			for (int k = 0; k <= i; k++) {
 				string += wordSearchGrid[counter - i][k];
 				counter++;
 			}
 			diagonalArray[i] = string;
 		}
-		//builds second half of diagonal array
-		for (int i = 0; i < gridLength; i++) {
+		//builds top-right diagonal strings
+		for (int x = 0; x < gridLength; x++) {
 			String string = "";
 			int counter = 0;
-			for (int k = 1; k <= (gridLength - i); k++) {
-				string += wordSearchGrid[counter][k + i];
+			for (int y = 1; y <= (gridLength - x); y++) {
+				string += wordSearchGrid[counter][x + y];
 				counter++;
 			}
-			diagonalArray[gridLength + i + 1] = string;
+			diagonalArray[gridLength + x + 1] = string;
 		}
 		return diagonalArray;
 	}
 
 	private String[] makeArrayOfDiagonalAscendingStrings() {
 		String[] diagonalArray = new String[wordSearchGrid.length * 2 - 1];
+		int gridLength = wordSearchGrid.length - 1;
+		for (int y = 0; y <= gridLength; y++) {
+			String string = "";
+			int counter = 0;
+			for (int x = 0; x <= y; x++) {
+				string += wordSearchGrid[y - counter][x];
+				counter++;
+			}
+			diagonalArray[y] = string;
+		}
+		
+		//builds second half of diagonal array
+		for (int y = 0; y < gridLength; y++) {
+			String string = "";
+			int counter = 9;
+			for (int x = 1; x <= (gridLength - y); x++) {
+				string += wordSearchGrid[counter][x + y];
+				counter--;
+			}
+			diagonalArray[gridLength + y + 1] = string;
+		}
 		return diagonalArray;
 	}
 

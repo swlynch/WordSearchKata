@@ -22,7 +22,7 @@ public class WordSearchTest {
 						{'O','N','E','N','N','N','K','R','D','M'},
 						{'X','D','F','A','A','E','G','Y','O','P'},
 						{'O','C','A','C','T','U','S','I','A','W'},
-						{'D','D','E','Z','J','Q','O','G','L','O'},
+						{'D','D','E','Z','J','Q','O','G','K','O'},
 						{'Y','N','T','U','D','E','W','G','B','G'}};
 		grid.setGrid(array);
 		arrayOfHorizontalStrings = grid.getArrayOfHorizontalStrings();
@@ -111,7 +111,7 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shoulReturnFalseThatWordLIGHTBEAMSIsPresentVertically() {
+	public void shouldReturnFalseThatWordLIGHTBEAMSIsPresentVertically() {
 		Assert.assertFalse("Should return true that word CANDLE is present vertically", grid.isPresentVertically("LIGHTBEAMS") || grid.isPresentVerticalAndBackwards("LIGHTBEAMS"));
 	}
 	
@@ -141,7 +141,7 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shoudlReturnFirstElementInDiagonalArrayAsY() {
+	public void shouldReturnFirstElementInDiagonalArrayAsY() {
 		Assert.assertEquals("Should return the char Y as first element in array", "Y", diagonalArray[0]);
 	}
 	
@@ -161,8 +161,8 @@ public class WordSearchTest {
 	}
 	
 	@Test
-	public void shouldReturn9thElementOfDiagonalDescendingAsWQALVNGILG() {
-		Assert.assertEquals("Should return 9th element of array as WQALVNGILG", "WQALVNGILG", diagonalArray[9]);
+	public void shouldReturn9thElementOfDiagonalDescendingAsWQALVNGIKG() {
+		Assert.assertEquals("Should return 9th element of array as WQALVNGIKG", "WQALVNGIKG", diagonalArray[9]);
 	}
 	
 	@Test
@@ -239,6 +239,21 @@ public class WordSearchTest {
 	@Test
 	public void shouldReturnLengthOf19ForDiagonalAscendingArrayOfStrings() {
 		Assert.assertEquals("Should return length of 19", 19, diagonalAscendingArray.length, 0.01);
+	}
+	
+	@Test
+	public void shouldReturnFirstElementInDiagonalAscendingArrayAsW() {
+		Assert.assertEquals("Should return the char W as first element in array", "W", diagonalAscendingArray[0]);
+	}
+	
+	@Test
+	public void shouldReturnLastElementInDiagonalArrayAsG() {
+		Assert.assertEquals("Should return the char G as first element in array", "G", diagonalAscendingArray[18]);
+	}
+	
+	@Test
+	public void shouldReturnSecondElementInDiagonalAscendingArrayAsDF() {
+		Assert.assertEquals("Should return the string DF as first element in array", "DF", diagonalAscendingArray[1]);
 	}
 	
 }
