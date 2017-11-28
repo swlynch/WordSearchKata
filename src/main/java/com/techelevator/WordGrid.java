@@ -213,6 +213,11 @@ public class WordGrid {
 	
 
 	public boolean isPresentDiagonalAscending(String searchWord) {
+		for (int i = 0; i < arrayOfDiagonalAscendingStrings.length; i++) {
+			if (arrayOfDiagonalAscendingStrings[i].contains(searchWord)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
