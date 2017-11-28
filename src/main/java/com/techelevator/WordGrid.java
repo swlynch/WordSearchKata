@@ -154,8 +154,12 @@ public class WordGrid {
 		} catch (NullPointerException e) {
 			return null;
 		}
-		
 	}
+		
+	private String stringThatContainsWordDiagonalAscending(String searchWord) {
+		return arrayOfDiagonalAscendingStrings[presentInWhichLineOfGrid(arrayOfDiagonalAscendingStrings, searchWord)];
+	}
+
 
 	public Boolean isPresentHorizontally(String searchWord) {
 		for (int i = 0; i < arrayOfHorizontalStrings.length; i++) {
@@ -382,17 +386,37 @@ public class WordGrid {
 		indices += (xLocation + 1) + "," + (yLocation - 1) + ")";
 		return indices;
 	}
-	
-	private String stringThatContainsWordDiagonalAscending(String searchWord) {
-		return arrayOfDiagonalAscendingStrings[presentInWhichLineOfGrid(arrayOfDiagonalAscendingStrings, searchWord)];
-	}
 
 	private String indicesForDiagonalAscendingBackwards(String searchWord) {
-
-		return null;
+		Integer arrayIndexOfWord = presentInWhichLineOfGrid(arrayOfDiagonalAscendingStrings, searchWord);
+		Integer index = reverseStringLetters(arrayOfDiagonalAscendingStrings[arrayIndexOfWord]).indexOf(searchWord);
+		int xLocation, yLocation;
+		if (arrayIndexOfWord >= wordSearchGrid.length) {
+			xLocation = wordSearchGrid.length - index - 1;
+			yLocation = arrayIndexOfWord - xLocation;
+		} else {
+			xLocation = arrayIndexOfWord - 1;
+			yLocation = index;
+		}
+		String indices = "(" + xLocation + "," + yLocation + "),(";
+		for (int i = 1; i < searchWord.length() - 1; i++) {
+			xLocation--;
+			yLocation++;
+			indices += xLocation + "," + yLocation + "),(";
+		}
+		indices += (xLocation - 1) + "," + (yLocation + 1) + ")";
+		return indices;
 	}
 
-
+//	if (arrayIndexOfWord >= wordSearchGrid.length) {
+//		String reverseString = reverseStringLetters(arrayOfDiagonalDescendingStrings[arrayIndexOfWord]);
+//		yLocation = reverseString.length() - reverseString.indexOf(searchWord) - 1;
+//		xLocation = arrayIndexOfWord - wordSearchGrid.length + yLocation + 1; 
+//	} else {
+//		String reverseString = reverseStringLetters(arrayOfDiagonalDescendingStrings[arrayIndexOfWord]);
+//		xLocation = reverseString.length() - reverseString.indexOf(searchWord) - 1;
+//		yLocation = wordSearchGrid.length - arrayIndexOfWord + xLocation - 1; 
+//	}
 
 
 
