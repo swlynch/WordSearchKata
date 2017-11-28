@@ -221,8 +221,12 @@ public class WordGrid {
 	}
 	
 	public boolean isPresentDiagonalAscendingBackward(String searchWord) {
-		return false;
-	}
+		for (int i = 0; i < arrayOfDiagonalAscendingStrings.length; i++) {
+			if (reverseStringLetters(arrayOfDiagonalAscendingStrings[i]).contains(searchWord)) {
+				return true;
+			}
+		}
+		return false;	}
 
 	private String reverseStringLetters(String string) {
 		String reversed = "";
