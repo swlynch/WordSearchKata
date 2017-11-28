@@ -275,4 +275,15 @@ public class WordSearchTest {
 	public void shouldReturnFalseThatGLORIAAppearsInDiagonalAscendingArrayBackwards() {
 		Assert.assertFalse("Should return false that GLORIA appears diagonal ascending", grid.isPresentDiagonalAscendingBackward("GLORIA"));
 	}
+	
+	@Test
+	public void shouldReturnIndicesOfGALACorrectly() {
+		Assert.assertEquals("Should return indices of GALA as (1,3),(2,2),(3,1),(4,0)", "(1,3),(2,2),(3,1),(4,0)", grid.returnLetterIndices("GALA"));
+	}
+	
+	@Test
+	public void shouldReturnIndicesOfCANDYCorrectly() {
+		Assert.assertEquals("Should return indices of CANDY as (3,7),(4,6),(5,5),(6,4),(7,3)", "(3,7),(4,6),(5,5),(6,4),(7,3)", grid.returnLetterIndices("CANDY"));
+
+	}
 }
