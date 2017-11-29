@@ -12,7 +12,7 @@ public class Main {
 		
 	}
 
-	public WordSearch generateWordSearch() {
+	public WordSearch generateWordSearch(String file) {
 		WordSearch wordSearch = new WordSearch();
 		return wordSearch;
 	}

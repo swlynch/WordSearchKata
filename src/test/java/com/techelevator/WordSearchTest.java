@@ -10,6 +10,8 @@ public class WordSearchTest {
 	private String stringOfCharacters;
 	private String[] diagonalDescendingStrings;
 	private String[] diagonalAscendingStrings;
+	private Main main;
+	private WordSearch wordSearch;
 	
 	@Before
 	public void setup() {
@@ -29,6 +31,9 @@ public class WordSearchTest {
 		verticalStrings = grid.getArrayOfVerticalStrings();
 		diagonalDescendingStrings = grid.getArrayOfDiagonalDescendingStrings();
 		diagonalAscendingStrings = grid.getArrayOfDiagonalAscendingStrings();
+		main = new Main ();
+		wordSearch = new WordSearch();
+		wordSearch = main.generateWordSearch("sample.txt");
 	}
 	
 	@Test
@@ -305,7 +310,21 @@ public class WordSearchTest {
 	public void shouldCreateANotNullWordSearch() {
 		Main main = new Main();
 		WordSearch wordSearch = new WordSearch();
-		wordSearch = main.generateWordSearch();
+		wordSearch = main.generateWordSearch("");
 		Assert.assertNotNull("Should create a wordsearch grid object that is not null", wordSearch);
+	}
+	
+	@Test
+	public void mainCreatesNotNullWordSearchFromFile() {
+		Main main = new Main ();
+		WordSearch wordSearch = new WordSearch();
+		wordSearch = main.generateWordSearch("sample.txt");
+		Assert.assertNotNull("Should create a not null wordSearch", wordSearch);
+	}
+	
+	@Test
+	public void mainCreatesNotNullWordSearchThatContainsSearchWordArrayLength4() {
+		String[] searchWords = wordSearch.getSearchWords();
+		Assert.assertEquals("Should be length 4", 4, searchWords.length, 0.01);
 	}
 }
