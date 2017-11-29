@@ -4,16 +4,16 @@ import org.junit.*;
 
 public class WordSearchTest {
 
-	private WordGrid grid;
-	private String[] arrayOfHorizontalStrings;
-	private String[] arrayOfVerticalStrings;
+	private Grid grid;
+	private String[] horizontalStrings;
+	private String[] verticalStrings;
 	private String stringOfCharacters;
-	private String[] diagonalArray;
-	private String[] diagonalAscendingArray;
+	private String[] diagonalDescendingStrings;
+	private String[] diagonalAscendingStrings;
 	
 	@Before
 	public void setup() {
-		grid = new WordGrid();
+		grid = new Grid();
 		char[][] array = {{'W','F','A','L','A','F','E','L','B','F'},
 						{'D','Q','V','L','A','N','A','B','K','X'},
 						{'C','V','A','E','J','L','O','Z','A','T'},
@@ -25,59 +25,59 @@ public class WordSearchTest {
 						{'D','D','E','Z','J','Q','O','G','K','O'},
 						{'Y','N','T','U','D','E','W','G','B','G'}};
 		grid.setGrid(array);
-		arrayOfHorizontalStrings = grid.getArrayOfHorizontalStrings();
-		arrayOfVerticalStrings = grid.getArrayOfVerticalStrings();
-		diagonalArray = grid.getArrayOfDiagonalDescendingStrings();
-		diagonalAscendingArray = grid.getArrayOfDiagonalAscendingStrings();
+		horizontalStrings = grid.getArrayOfHorizontalStrings();
+		verticalStrings = grid.getArrayOfVerticalStrings();
+		diagonalDescendingStrings = grid.getArrayOfDiagonalDescendingStrings();
+		diagonalAscendingStrings = grid.getArrayOfDiagonalAscendingStrings();
 	}
 	
 	@Test
 	public void arrayOfHorizontalStringsShouldNotBeNull() {
-		Assert.assertNotNull("Should not be null", arrayOfHorizontalStrings);
+		Assert.assertNotNull("Should not be null", horizontalStrings);
 	}
 	
 	@Test
 	public void stringContainingWordCACTUSShouldNotBeNull() {
-		stringOfCharacters = grid.stringThatContainsWordHorizontally("CACTUS");
+		stringOfCharacters = horizontalStrings[grid.presentInWhichLineOfGrid(horizontalStrings,"CACTUS")];
 		Assert.assertNotNull("Should not be null", stringOfCharacters);
 	}
 	
 	@Test
 	public void shouldReturnAValueOf1ForIndexOfCACTUS() {
-		stringOfCharacters = grid.stringThatContainsWordHorizontally("CACTUS");
+		stringOfCharacters = horizontalStrings[grid.presentInWhichLineOfGrid(horizontalStrings,"CACTUS")];
 		Assert.assertEquals("Should return the index 1", 1, stringOfCharacters.indexOf("CACTUS"));
 	}
 	
 	@Test
 	public void shouldReturnAValueOf4ForIndexOfDEW() {
-		stringOfCharacters = grid.stringThatContainsWordHorizontally("DEW");
+		stringOfCharacters = horizontalStrings[grid.presentInWhichLineOfGrid(horizontalStrings,"DEW")];
 		Assert.assertEquals("Should return the index 4", 4, stringOfCharacters.indexOf("DEW"));
 	}
 
 	@Test
 	public void shouldReturnAValueOf1ForIndexOfFALAFEL() {
-		stringOfCharacters = grid.stringThatContainsWordHorizontally("FALAFEL");
+		stringOfCharacters = horizontalStrings[grid.presentInWhichLineOfGrid(horizontalStrings,"FALAFEL")];
 		Assert.assertEquals("Should return the index 1", 1, stringOfCharacters.indexOf("FALAFEL"));
 	}
 
 	@Test
 	public void shouldReturnTrueIfONEIsPresentInLine() {
-		Assert.assertTrue("Should return 'true' that word is present in line", grid.isPresentHorizontally("ONE") || grid.isPresentHorizontalAndBackwards("ONE"));
+		Assert.assertTrue("Should return 'true' that word is present in line", grid.isPresentInThisArray(horizontalStrings, "ONE") || grid.isPresentInThisArray(horizontalStrings, grid.reverseStringLetters("ONE")));
 	}
 	
 	@Test
 	public void shouldReturnFalseWhenWordMUSTARDIsPresentIsNotLine() {
-		Assert.assertNull("Should return null", grid.presentInWhichLineOfGrid(arrayOfHorizontalStrings, "MUSTARD"));
+		Assert.assertNull("Should return null", grid.presentInWhichLineOfGrid(horizontalStrings, "MUSTARD"));
 	}
 	
 	@Test
 	public void shouldReturnTrueIfBANIsPresentInBackwardsOrder() {
-		Assert.assertTrue("Should return true", grid.isPresentHorizontalAndBackwards("BAN"));
+		Assert.assertTrue("Should return true", grid.isPresentInThisArray(horizontalStrings, grid.reverseStringLetters("BAN")));
 	}
 	
 	@Test
 	public void shoudlReturnTrueIfWordZEDIsPresentInBackwardsOrder() {
-		Assert.assertTrue("Should return true", grid.isPresentHorizontalAndBackwards("ZED"));
+		Assert.assertTrue("Should return true", grid.isPresentInThisArray(horizontalStrings, grid.reverseStringLetters("ZED")));
 	}
 	
 	@Test
@@ -96,23 +96,28 @@ public class WordSearchTest {
 	}
 	
 	@Test
+	public void returnLocationForWordBANALHorizontalInReverse() {
+		Assert.assertEquals("Should return (7,1),(6,1),(5,1),(4,1),(3,1)", "(7,1),(6,1),(5,1),(4,1),(3,1)", grid.returnLetterIndices("BANAL"));
+	}
+	
+	@Test
 	public void returnLocationOfEachLetterOfBackwardsStringPDDY() {
 		Assert.assertEquals("Should return (8,4),(7,4),(6,4),(5,4)", "(8,4),(7,4),(6,4),(5,4)", grid.returnLetterIndices("PDDY"));
 	}
 	
 	@Test
 	public void shouldReturnTrueThatWordWOOIsPresentVertically() {
-		Assert.assertTrue("Should return true that word WOO is present vertically", grid.isPresentVertically("WOO") || grid.isPresentVerticalAndBackwards("WOO"));
+		Assert.assertTrue("Should return true that word WOO is present vertically", grid.isPresentInThisArray(verticalStrings, "WOO") || grid.isPresentInThisArray(verticalStrings, "OOW"));
 	}
 	
 	@Test
 	public void shouldReturnTrueThatWordCANDLEIsPresentVertically() {
-		Assert.assertTrue("Should return true that word CANDLE is present vertically", grid.isPresentVertically("CANDLE") || grid.isPresentVerticalAndBackwards("CANDLE"));
+		Assert.assertTrue("Should return true that word CANDLE is present vertically", grid.isPresentInThisArray(verticalStrings, "CANDLE") || grid.isPresentInThisArray(verticalStrings, "ELDNAC"));
 	}
 	
 	@Test
 	public void shouldReturnFalseThatWordLIGHTBEAMSIsPresentVertically() {
-		Assert.assertFalse("Should return true that word CANDLE is present vertically", grid.isPresentVertically("LIGHTBEAMS") || grid.isPresentVerticalAndBackwards("LIGHTBEAMS"));
+		Assert.assertFalse("Should return true that word CANDLE is present vertically", grid.isPresentInThisArray(verticalStrings, "LIGHTBEAMS") || grid.isPresentInThisArray(verticalStrings, "SMAEBTHGIL"));
 	}
 	
 	@Test
@@ -137,57 +142,57 @@ public class WordSearchTest {
 	
 	@Test
 	public void shouldReturnLengthOf19ForDiagonalDescendingArrayOfStrings() {
-		Assert.assertEquals("Should return length of 19", 19, diagonalArray.length, 0.01);
+		Assert.assertEquals("Should return length of 19", 19, diagonalDescendingStrings.length, 0.01);
 	}
 	
 	@Test
 	public void shouldReturnFirstElementInDiagonalArrayAsY() {
-		Assert.assertEquals("Should return the char Y as first element in array", "Y", diagonalArray[0]);
+		Assert.assertEquals("Should return the char Y as first element in array", "Y", diagonalDescendingStrings[0]);
 	}
 	
 	@Test
 	public void shouldReturn18thElementAsF() {
-		Assert.assertEquals("Should return F as 18th element", "F", diagonalArray[18]);
+		Assert.assertEquals("Should return F as 18th element", "F", diagonalDescendingStrings[18]);
 	}
 	
 	@Test
 	public void shouldReturn15thElementasEBAC() {
-		Assert.assertEquals("Should return E as 15th element", "EBAC", diagonalArray[15]);
+		Assert.assertEquals("Should return E as 15th element", "EBAC", diagonalDescendingStrings[15]);
 	}
 	
 	@Test
 	public void shouldReturn2ndElementofDiagonalDescendingArrayAsDN() {
-		Assert.assertEquals("Should return 2nd element of array as DN", "DN", diagonalArray[1]);
+		Assert.assertEquals("Should return 2nd element of array as DN", "DN", diagonalDescendingStrings[1]);
 	}
 	
 	@Test
 	public void shouldReturn9thElementOfDiagonalDescendingAsWQALVNGIKG() {
-		Assert.assertEquals("Should return 9th element of array as WQALVNGIKG", "WQALVNGIKG", diagonalArray[9]);
+		Assert.assertEquals("Should return 9th element of array as WQALVNGIKG", "WQALVNGIKG", diagonalDescendingStrings[9]);
 	}
 	
 	@Test
 	public void shouldReturn10thElementOfDiagonalDescendingAsFVEAYKYAO() {
-		Assert.assertEquals("Should return 9th element of array as FVEAYKYAO", "FVEAYKYAO", diagonalArray[10]);
+		Assert.assertEquals("Should return 9th element of array as FVEAYKYAO", "FVEAYKYAO", diagonalDescendingStrings[10]);
 	}
 	
 	@Test
 	public void shouldReturn17thElementofDiagonalDescendingAsBX() {
-		Assert.assertEquals("Should return 17th element as BX", "BX", diagonalArray[17]);
+		Assert.assertEquals("Should return 17th element as BX", "BX", diagonalDescendingStrings[17]);
 	}
 	
 	@Test
 	public void shouldReturnTrueThatWordROWIsPresentDiagonallyDescending() {
-		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentDiagonallyDescending("ROW"));
+		Assert.assertTrue("Should return true that ROW is present diagonally and descending", grid.isPresentInThisArray(diagonalDescendingStrings, "ROW"));
 	}
 	
 	@Test
 	public void shouldReturnTrueThatWORDAppearsDiagonalDescending() {
-		Assert.assertTrue("Should assert true that WORD appears in diagonal descending array", grid.isPresentDiagonalDescendingBackwards("WORD"));
+		Assert.assertTrue("Should assert true that WORD appears in diagonal descending array", grid.isPresentInThisArray(diagonalDescendingStrings, "DROW"));
 	}
 	
 	@Test
 	public void shouldReturnIndexOf11ForWhatDiagonalDesendingStringWORDAppearsIn() {
-		Assert.assertEquals("Should return an index 11 for array of diagonal descending array when looking for word WORD", 11, grid.presentInWhichLineOfGrid(diagonalArray, "WORD"), 0.01);
+		Assert.assertEquals("Should return an index 11 for array of diagonal descending array when looking for word WORD", 11, grid.presentInWhichLineOfGrid(diagonalDescendingStrings, "WORD"), 0.01);
 	}
 	
 	@Test
@@ -238,42 +243,42 @@ public class WordSearchTest {
 
 	@Test
 	public void shouldReturnLengthOf19ForDiagonalAscendingArrayOfStrings() {
-		Assert.assertEquals("Should return length of 19", 19, diagonalAscendingArray.length, 0.01);
+		Assert.assertEquals("Should return length of 19", 19, diagonalAscendingStrings.length, 0.01);
 	}
 	
 	@Test
 	public void shouldReturnFirstElementInDiagonalAscendingArrayAsW() {
-		Assert.assertEquals("Should return the char W as first element in array", "W", diagonalAscendingArray[0]);
+		Assert.assertEquals("Should return the char W as first element in array", "W", diagonalAscendingStrings[0]);
 	}
 	
 	@Test
 	public void shouldReturnLastElementInDiagonalArrayAsG() {
-		Assert.assertEquals("Should return the char G as first element in array", "G", diagonalAscendingArray[18]);
+		Assert.assertEquals("Should return the char G as first element in array", "G", diagonalAscendingStrings[18]);
 	}
 	
 	@Test
 	public void shouldReturnSecondElementInDiagonalAscendingArrayAsDF() {
-		Assert.assertEquals("Should return the string DF as first element in array", "DF", diagonalAscendingArray[1]);
+		Assert.assertEquals("Should return the string DF as first element in array", "DF", diagonalAscendingStrings[1]);
 	}
 	
 	@Test
 	public void shouldReturnTrueThatCANDYAppearsInDiagonalAscendingArray() {
-		Assert.assertTrue("Should return true that CANDY appears diagonal ascending", grid.isPresentDiagonalAscending("CANDY"));
+		Assert.assertTrue("Should return true that CANDY appears diagonal ascending", grid.isPresentInThisArray(diagonalAscendingStrings, "CANDY"));
 	}
 	
 	@Test
 	public void shouldReturnFalseThatPASTAAppearsInDiagonalAscendingArray() {
-		Assert.assertFalse("Should return false that PASTA appears diagonal ascending", grid.isPresentDiagonalAscending("PASTA"));
+		Assert.assertFalse("Should return false that PASTA appears diagonal ascending", grid.isPresentInThisArray(diagonalAscendingStrings, "PASTA"));
 	}
 	
 	@Test
 	public void shouldReturnTrueThatLAGAppearsInDiagonalAscendingArrayBackwards() {
-		Assert.assertTrue("Should return true that LAG appears diagonal ascending", grid.isPresentDiagonalAscendingBackward("LAG"));
+		Assert.assertTrue("Should return true that LAG appears diagonal ascending", grid.isPresentInThisArray(diagonalAscendingStrings, grid.reverseStringLetters("LAG")));
 	}
 	
 	@Test
 	public void shouldReturnFalseThatGLORIAAppearsInDiagonalAscendingArrayBackwards() {
-		Assert.assertFalse("Should return false that GLORIA appears diagonal ascending", grid.isPresentDiagonalAscendingBackward("GLORIA"));
+		Assert.assertFalse("Should return false that GLORIA appears diagonal ascending", grid.isPresentInThisArray(diagonalAscendingStrings, grid.reverseStringLetters("GLORIA")));
 	}
 	
 	@Test
