@@ -13,7 +13,8 @@ public class Main {
 	}
 
 	public WordSearch generateWordSearch() {
-		return null;
+		WordSearch wordSearch = new WordSearch();
+		return wordSearch;
 	}
 	
 	
