@@ -1,5 +1,9 @@
 package com.techelevator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class WordSearch {
 
 	private Grid grid;
@@ -17,6 +21,6 @@ public class WordSearch {
 	public void setSearchWords(String[] searchWords) {
 		this.searchWords = searchWords;
 	}
-	
-	
+
+
 }

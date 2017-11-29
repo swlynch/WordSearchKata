@@ -300,4 +300,12 @@ public class WordSearchTest {
 	public void shouldReturnIndicesOFPRGUCorrectly() {
 		Assert.assertEquals("Should return for the string PRGU the indices (8,4),(7,5),(6,6),(5,7)", "(8,4),(7,5),(6,6),(5,7)", grid.returnLetterIndices("PRGU"));
 	}
+	
+	@Test
+	public void shouldCreateANotNullWordSearch() {
+		Main main = new Main();
+		WordSearch wordSearch = new WordSearch();
+		wordSearch = main.generateWordSearch();
+		Assert.assertNotNull("Should create a wordsearch grid object that is not null", wordSearch);
+	}
 }
