@@ -40,8 +40,7 @@ public class Grid {
 		return diagonalAscendingStrings;
 	}
 
-
-	public String[] makeArrayOfHorizontalStringsInGrid() {
+	private String[] makeArrayOfHorizontalStringsInGrid() {
 		String[] arrayOfStrings = new String[wordGrid.length];
 		for (int i = 0; i < wordGrid.length; i++) {
 			String stringFromCharacters = "";
@@ -103,7 +102,6 @@ public class Grid {
 			}
 			diagonalArray[y] = string;
 		}
-		
 		//builds second half of diagonal array
 		for (int y = 0; y < gridLength; y++) {
 			String string = "";
@@ -127,34 +125,6 @@ public class Grid {
 		}
 		return null;
 	}
-	
-//	public String stringThatContainsWordHorizontally(String searchWord) {
-//		try {
-//			return horizontalStrings[presentInWhichLineOfGrid(horizontalStrings, searchWord)];
-//		} catch (NullPointerException e) {
-//			return null;
-//		}
-//	}
-//	
-//	public String stringThatContainsWordHorizontalAndBackwards(String searchWord) {
-//		return reverseStringLetters(horizontalStrings[presentInWhichLineOfGrid(horizontalStrings, searchWord)]);
-//	}
-//	
-//	public String stringThatContainsWordDiagonalDescending(String searchWord) {
-//		try {
-//			return diagonalDescendingStrings[presentInWhichLineOfGrid(diagonalDescendingStrings, searchWord)];
-//		} catch (NullPointerException e) {
-//			return null;
-//		}
-//	}
-//	
-//	public String stringThatContainsWordDiagonalDescendingBackward(String searchWord) {
-//		try {
-//			return reverseStringLetters(diagonalDescendingStrings[presentInWhichLineOfGrid(diagonalDescendingStrings, searchWord)]);
-//		} catch (NullPointerException e) {
-//			return null;
-//		}
-//	}
 
 	public Boolean isPresentInThisArray(String[] array, String searchWord) {
 		for (int i = 0; i < array.length; i++) {
@@ -176,18 +146,18 @@ public class Grid {
 	public String returnLetterIndices(String searchWord) {
 		if (isPresentInThisArray(horizontalStrings, searchWord)) {
 			return indicesForHorizontal(searchWord);
-		} else if (isPresentInThisArray(horizontalStrings, reverseStringLetters(searchWord))){
-			return indicesForWordsHorizontalBackwards(searchWord);
 		} else if (isPresentInThisArray(verticalStrings, searchWord)){
 			return indicesForVertical(searchWord);
-		} else if (isPresentInThisArray(verticalStrings, reverseStringLetters(searchWord))) {
-			return indicesForVerticalAndBackwards(searchWord);
 		} else if (isPresentInThisArray(diagonalDescendingStrings, searchWord)) {
 			return indicesForDiagonalDescending(searchWord);
-		} else if (isPresentInThisArray(diagonalDescendingStrings, reverseStringLetters(searchWord))) {
-			return indicesForDiagonalDescendingBackwards(searchWord);
 		} else if (isPresentInThisArray(diagonalAscendingStrings, searchWord)) {
 			return indicesForDiagonalAscending(searchWord);
+		} else if (isPresentInThisArray(horizontalStrings, reverseStringLetters(searchWord))){
+			return indicesForWordsHorizontalBackwards(searchWord);
+		} else if (isPresentInThisArray(verticalStrings, reverseStringLetters(searchWord))) {
+			return indicesForVerticalAndBackwards(searchWord);
+		} else if (isPresentInThisArray(diagonalDescendingStrings, reverseStringLetters(searchWord))) {
+			return indicesForDiagonalDescendingBackwards(searchWord);
 		} else if (isPresentInThisArray(diagonalAscendingStrings, reverseStringLetters(searchWord))) {
 			return indicesForDiagonalAscendingBackwards(searchWord);
 		} else {
@@ -196,14 +166,14 @@ public class Grid {
 	}
 
 	private String indicesForHorizontal(String searchWord) {
-		Integer lineWithWord = presentInWhichLineOfGrid(horizontalStrings, searchWord);
-		Integer startLocation = horizontalStrings[lineWithWord].indexOf(searchWord);
-		String letterIndices = "(" + startLocation + "," + lineWithWord + "),(";
+		Integer xLocation = presentInWhichLineOfGrid(horizontalStrings, searchWord);
+		Integer yLocation = horizontalStrings[xLocation].indexOf(searchWord);
+		String letterIndices = "(" + yLocation + "," + xLocation + "),(";
 		for (int i = 1; i < searchWord.length(); i++) {
 			if (i != searchWord.length() - 1) {
-				letterIndices += (startLocation + i) + "," + lineWithWord + "),(";
+				letterIndices += (yLocation + i) + "," + xLocation + "),(";
 			} else {
-				letterIndices += (startLocation + i) + "," + lineWithWord + ")";
+				letterIndices += (yLocation + i) + "," + xLocation + ")";
 			}
 		}
 		return letterIndices;
@@ -212,7 +182,6 @@ public class Grid {
 	private String indicesForWordsHorizontalBackwards(String searchWord) {
 		Integer yLocation = presentInWhichLineOfGrid(horizontalStrings, searchWord);
 		Integer xLocation = horizontalStrings[yLocation].indexOf(reverseStringLetters(searchWord));
-//		String string = horizontalStrings[yLocation];
 		xLocation += searchWord.length() - 1;
 		String letterIndices = "(" + xLocation + "," + yLocation + "),(";
 		for (int i = 1; i <= (searchWord.length() - 1); i++) {
@@ -226,31 +195,30 @@ public class Grid {
 	}
 
 	private String indicesForVertical(String searchWord) {
-		Integer lineWithWord = presentInWhichLineOfGrid(verticalStrings, searchWord);
-		String string = verticalStrings[lineWithWord];
-		Integer startLocation = string.indexOf(searchWord);
-		String letterIndices = "(" + lineWithWord + "," + startLocation + "),(";
+		Integer xLocation = presentInWhichLineOfGrid(verticalStrings, searchWord);
+		Integer yLocation = verticalStrings[xLocation].indexOf(searchWord);
+		String letterIndices = "(" + xLocation + "," + yLocation + "),(";
 		for (int i = 1; i <= (searchWord.length() - 1); i++) {
 			if (i != searchWord.length() - 1) {
-				letterIndices += (lineWithWord) + "," + (startLocation + i) +"),(";
+				letterIndices += (xLocation) + "," + (yLocation + i) +"),(";
 			} else {
-				letterIndices += (lineWithWord) + "," + (startLocation + i) + ")";
+				letterIndices += (xLocation) + "," + (yLocation + i) + ")";
 			}
 		}
 		return letterIndices;
 	}
 	
 	private String indicesForVerticalAndBackwards(String searchWord) {
-		Integer arrayIndexOfWord = presentInWhichLineOfGrid(verticalStrings, searchWord);
-		String string = reverseStringLetters(verticalStrings[arrayIndexOfWord]);
-		Integer startLocation = string.indexOf(searchWord);
-		startLocation = (string.length() - startLocation - 1);
-		String letterIndices = "(" + arrayIndexOfWord + "," + startLocation + "),(";
+		Integer xLocation = presentInWhichLineOfGrid(verticalStrings, searchWord);
+		String string = reverseStringLetters(verticalStrings[xLocation]);
+		Integer yLocation = string.indexOf(searchWord);
+		yLocation = (string.length() - yLocation - 1);
+		String letterIndices = "(" + xLocation + "," + yLocation + "),(";
 		for (int i = 1; i <= (searchWord.length() - 1); i++) {
 			if (i != searchWord.length() - 1) {
-				letterIndices += arrayIndexOfWord + "," + (startLocation - i) +"),(";
+				letterIndices += xLocation + "," + (yLocation - i) +"),(";
 			} else {
-				letterIndices += arrayIndexOfWord + "," + (startLocation - i) + ")";
+				letterIndices += xLocation + "," + (yLocation - i) + ")";
 			}
 		}
 		return letterIndices;
@@ -339,13 +307,5 @@ public class Grid {
 		indices += (xLocation - 1) + "," + (yLocation + 1) + ")";
 		return indices;
 	}
-
-
-
-
-
-
-
-
 
 }
