@@ -324,6 +324,10 @@ public class WordSearchTest {
 		Assert.assertEquals("Should be length 5", 5, wordsArray.length, 0.01);
 	}
 	
-
-	
+	@Test
+	public void firstWordInSearchArrayIsCANDY() {
+		String words = "CANDY,CANDLE,WORD,CACTUS,FALAFEL";
+		String[] wordsArray = loader.createSearchWordsArray(words);
+		Assert.assertEquals("Should return first element in array as CANDY", "CANDY", wordsArray[0]);
+	}
 }
