@@ -10,8 +10,8 @@ public class WordSearchTest {
 	private String stringOfCharacters;
 	private String[] diagonalDescendingStrings;
 	private String[] diagonalAscendingStrings;
-	private Main main;
 	private WordSearch wordSearch;
+	private WordSearchLoader loader;
 	
 	@Before
 	public void setup() {
@@ -31,9 +31,10 @@ public class WordSearchTest {
 		verticalStrings = grid.getArrayOfVerticalStrings();
 		diagonalDescendingStrings = grid.getArrayOfDiagonalDescendingStrings();
 		diagonalAscendingStrings = grid.getArrayOfDiagonalAscendingStrings();
-		main = new Main ();
+		loader = new WordSearchLoader();
 		wordSearch = new WordSearch();
-		wordSearch = main.generateWordSearch("sample.txt");
+		String words = "CANDY,CANDLE,WORD,CACTUS,FALAFEL";
+		loader.createSearchWordsArray(words);
 	}
 	
 	@Test
@@ -308,23 +309,21 @@ public class WordSearchTest {
 	
 	@Test
 	public void shouldCreateANotNullWordSearch() {
-		Main main = new Main();
-		WordSearch wordSearch = new WordSearch();
-		wordSearch = main.generateWordSearch("");
 		Assert.assertNotNull("Should create a wordsearch grid object that is not null", wordSearch);
 	}
 	
 	@Test
 	public void mainCreatesNotNullWordSearchFromFile() {
-		Main main = new Main ();
-		WordSearch wordSearch = new WordSearch();
-		wordSearch = main.generateWordSearch("sample.txt");
 		Assert.assertNotNull("Should create a not null wordSearch", wordSearch);
 	}
 	
 	@Test
-	public void mainCreatesNotNullWordSearchThatContainsSearchWordArrayLength4() {
-		String[] searchWords = wordSearch.getSearchWords();
-		Assert.assertEquals("Should be length 4", 4, searchWords.length, 0.01);
+	public void generateSearchWordsArrayAccurateParsesTextString() {
+		String words = "CANDY,CANDLE,WORD,CACTUS,FALAFEL";
+		String[] wordsArray = loader.createSearchWordsArray(words);		
+		Assert.assertEquals("Should be length 5", 5, wordsArray.length, 0.01);
 	}
+	
+
+	
 }

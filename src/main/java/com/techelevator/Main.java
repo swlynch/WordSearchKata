@@ -2,6 +2,8 @@ package com.techelevator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,13 +12,8 @@ public class Main {
 		
 	public void run() {
 		
-	}
+	}	
 
-	public WordSearch generateWordSearch(String file) {
-		WordSearch wordSearch = new WordSearch();
-		return wordSearch;
-	}
-	
-	
+
 	
 }
