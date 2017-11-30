@@ -33,8 +33,9 @@ public class WordSearchTest {
 		diagonalAscendingStrings = grid.getArrayOfDiagonalAscendingStrings();
 		loader = new WordSearchLoader();
 		wordSearch = new WordSearch();
-		String words = "CANDY,CANDLE,WORD,CACTUS,FALAFEL";
-		loader.createSearchWordsArray(words);
+//		String words = "CANDY,CANDLE,WORD,CACTUS,FALAFEL";
+//		loader.createSearchWordsArray(words);
+		wordSearch = loader.generateWordSearch("sample.txt");
 	}
 	
 	@Test
