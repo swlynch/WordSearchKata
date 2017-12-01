@@ -26,7 +26,6 @@ public class WordSearchLoader {
 				//iterate through array and place into List of Chars -- each char is a list item
 				List<Character> lineOfChars = new ArrayList<Character>();
 				for (int i = 0; i < chars.length; i++) {
-					System.out.println(chars[i]);
 					lineOfChars.add(chars[i].charAt(0));
 				}
 				gridList.add(lineOfChars);
@@ -39,8 +38,8 @@ public class WordSearchLoader {
 				for (int k = 0; k < array.length; k++) {
 					array[i][k] = listOfChars.get(k);
 				}
-				grid.setGrid(array);
 			}
+			grid.setGrid(array);
 			wordSearch.setGrid(grid);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

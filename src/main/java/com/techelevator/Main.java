@@ -7,16 +7,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
-	private WordSearch wordSearch;
-	private WordSearchLoader loader;
 		
-	public void run() {
+	public static void main(String[] args) {
 		//creates instance of WordSearchLoader 
-		loader = new WordSearchLoader();
-		loader.generateWordSearch("sample.txt");
+		WordSearchLoader loader = new WordSearchLoader();
+		WordSearch wordsearch = loader.generateWordSearch("sample.txt");
+		Grid grid = wordsearch.getGrid();
+		String [] words = wordsearch.getSearchWords();
+		for (int i = 0; i < words.length; i++) {
+			System.out.print(words[i] + ":");
+			String indices = grid.returnLetterIndices(words[i]);
+			System.out.println(indices);
+		}
 		
-		//iterates through WordSearch and prints out words
 	}	
 
 
