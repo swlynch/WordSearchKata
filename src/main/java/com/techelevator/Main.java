@@ -9,9 +9,14 @@ import java.util.Scanner;
 public class Main {
 
 	private WordSearch wordSearch;
+	private WordSearchLoader loader;
 		
 	public void run() {
+		//creates instance of WordSearchLoader 
+		loader = new WordSearchLoader();
+		loader.generateWordSearch("sample.txt");
 		
+		//iterates through WordSearch and prints out words
 	}	
 
 

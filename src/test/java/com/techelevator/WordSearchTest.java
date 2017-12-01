@@ -4,17 +4,17 @@ import org.junit.*;
 
 public class WordSearchTest {
 
-	private Grid grid;
-	private String[] horizontalStrings;
-	private String[] verticalStrings;
-	private String stringOfCharacters;
-	private String[] diagonalDescendingStrings;
-	private String[] diagonalAscendingStrings;
-	private WordSearch wordSearch;
-	private WordSearchLoader loader;
+	private static Grid grid;
+	private static String[] horizontalStrings;
+	private static String[] verticalStrings;
+	private static String stringOfCharacters;
+	private static String[] diagonalDescendingStrings;
+	private static String[] diagonalAscendingStrings;
+	private static WordSearch wordSearch;
+	private static WordSearchLoader loader;
 	
-	@Before
-	public void setup() {
+	@BeforeClass
+	public static void setup() {
 		grid = new Grid();
 		char[][] array = {{'W','F','A','L','A','F','E','L','B','F'},
 						{'D','Q','V','L','A','N','A','B','K','X'},
@@ -32,7 +32,7 @@ public class WordSearchTest {
 		diagonalDescendingStrings = grid.getArrayOfDiagonalDescendingStrings();
 		diagonalAscendingStrings = grid.getArrayOfDiagonalAscendingStrings();
 		loader = new WordSearchLoader();
-		wordSearch = new WordSearch();
+
 //		String words = "CANDY,CANDLE,WORD,CACTUS,FALAFEL";
 //		loader.createSearchWordsArray(words);
 		wordSearch = loader.generateWordSearch("sample.txt");
